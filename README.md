@@ -28,7 +28,7 @@ See [docs/corpus.md](docs/corpus.md) for the generation contract, challenge set,
 - Docker (for PostgreSQL 16 + pgvector)
 - Python 3.10+ with `pip install -r generator/requirements.txt`
 - LibreOffice 7.3+ (`soffice` on PATH) for ODT → PDF/DOCX export
-- ffmpeg (only to regenerate the Gus community videos)
+- ffmpeg and Chrome/Chromium (only to regenerate the Gus community videos; set `CHROME` if it is not on PATH)
 
 ## Run locally
 

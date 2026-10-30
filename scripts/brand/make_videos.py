@@ -1,14 +1,16 @@
 """Render the fictional "Gus in the Community" mascot-mishap clips (silent MP4 + poster + WebVTT captions).
 
 Deterministic: python3 scripts/brand/make_videos.py apps/web/public/videos
-Requires ffmpeg, Pillow, numpy, PyMuPDF (for rasterizing the Gus SVG poses).
+Requires ffmpeg, Pillow, numpy, and Chrome/Chromium (for rasterizing the Gus SVG poses).
 """
 import math
+import os
+import shutil
 import subprocess
+import tempfile
 import sys
 from pathlib import Path
 
-import fitz
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -17,6 +19,7 @@ W, H, FPS, SECONDS = 960, 540, 24, 9
 NAVY, TEAL, IVORY, AMBER, SLATE = (23, 43, 58), (22, 143, 136), (248, 245, 236), (231, 166, 59), (83, 97, 106)
 FONT = ROOT / "generator/fonts/Inter-Bold.ttf"
 SERIF = ROOT / "generator/fonts/SourceSerif4-Bold.ttf"
+CHROME = os.environ.get("CHROME") or shutil.which("google-chrome") or shutil.which("chromium") or "chromium-browser"
 
 EPISODES = [
     dict(slug="story-time", title="Library Story Time", banner="STORY TIME WITH GUS!", scene="library",
@@ -38,12 +41,18 @@ EPISODES = [
 
 
 def gus_sprite(pose, height):
-    svg = fitz.open(ROOT / f"apps/web/public/brand/gus-{pose}-light.svg")
-    pdf = fitz.open("pdf", svg.convert_to_pdf())
-    page = pdf[0]
-    zoom = height / page.rect.height
-    pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=True)
-    return Image.frombytes("RGBA", (pix.width, pix.height), pix.samples)
+    """Rasterize with headless Chrome so SVG filters and gradients match the browser."""
+    svg = ROOT / f"apps/web/public/brand/gus-{pose}-light.svg"
+    width = round(height * 200 / 230)
+    with tempfile.TemporaryDirectory() as tmp:
+        page, png = Path(tmp) / "gus.html", Path(tmp) / "gus.png"
+        art = svg.read_text().replace("<svg ", f'<svg width="{width}" height="{height}" style="display:block" ', 1)
+        page.write_text(f'<html><body style="margin:0;background:transparent">{art}</body></html>')
+        subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+                        "--allow-file-access-from-files", "--default-background-color=00000000",
+                        f"--window-size={width + 200},{height + 200}", f"--screenshot={png}", page.as_uri()],
+                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return Image.open(png).convert("RGBA").crop((0, 0, width, height))
 
 
 def scene(d: ImageDraw.ImageDraw, kind, banner, font_b):
