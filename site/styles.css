@@ -64,6 +64,14 @@ nav a:hover { background: var(--ivory-200); }
 .pose strong { font-size: 1rem; }
 .pose span { font-size: .8rem; color: var(--slate); text-align: center; }
 
+.episodes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.episode { background: #fff; border: 1px solid var(--ivory-300); border-radius: 14px; overflow: hidden; }
+.episode video { width: 100%; aspect-ratio: 16 / 9; background: var(--navy); display: block; }
+.episode div { padding: 14px 16px; }
+.episode span { text-transform: uppercase; font-size: .7rem; font-weight: 700; letter-spacing: .08em; color: var(--teal-700); }
+.episode h3 { font: 600 1rem var(--sans); margin-top: 4px; }
+.episode p { font-size: .88rem; color: var(--slate); margin: 4px 0 0; }
+
 .band { background: var(--navy); color: var(--ivory); padding: 72px 0; margin-top: 72px; }
 .band-ivory { background: var(--ivory-200); color: var(--navy); }
 .band h2 { max-width: 48rem; }
@@ -114,11 +122,13 @@ nav a:hover { background: var(--ivory-200); }
   .poses { grid-template-columns: repeat(4, 1fr); }
   .products { grid-template-columns: repeat(2, 1fr); }
   .pillars, .stats { grid-template-columns: repeat(2, 1fr); }
+  .episodes { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
   .hero-grid { grid-template-columns: 1fr; padding-top: 40px; }
   .hero-gus { order: -1; }
   .poses { grid-template-columns: repeat(2, 1fr); }
+  .episodes { grid-template-columns: 1fr; }
   .screens { grid-template-columns: 1fr; }
   .footer-grid, .pillars { grid-template-columns: 1fr; }
   .closer { flex-direction: column; text-align: center; }

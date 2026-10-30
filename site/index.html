@@ -26,6 +26,7 @@
       </a>
       <nav aria-label="Primary">
         <a href="#gus">Meet Gus</a>
+        <a href="#film">Gus on film</a>
         <a href="#building">What we're building</a>
         <a href="#roadmap">Roadmap</a>
         <a class="btn-ghost" href="https://github.com/jbg3434/silly-goose-pdf">GitHub</a>
@@ -70,6 +71,36 @@
         <li><button type="button" class="pose" data-pose="sideeye" data-cue="sad-honk"><img src="brand/gus-sideeye-light.svg" alt="" /><strong>Side-eye</strong><span>Suspicious of that answer</span></button></li>
         <li><button type="button" class="pose" data-pose="sleepy"><img src="brand/gus-sleepy-light.svg" alt="" /><strong>Sleepy</strong><span>Waiting on the indexer</span></button></li>
         <li><button type="button" class="pose" data-pose="alarmed" data-cue="squawk"><img src="brand/gus-alarmed-light.svg" alt="" /><strong>Alarmed</strong><span>"Not found in the guide."</span></button></li>
+      </ul>
+    </section>
+
+    <section class="wrap section" id="film" aria-labelledby="film-h">
+      <div class="section-head">
+        <h2 id="film-h">Gus in the community</h2>
+        <p class="muted">Our full-size mascot loves meeting the public. The public has mixed feelings. Staged, fictional cartoon clips; nobody was hurt.</p>
+      </div>
+      <ul class="episodes">
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-story-time.jpg" aria-describedby="ep-story-time">
+            <source src="videos/gus-story-time.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-story-time.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 1</span><h3>Library Story Time</h3><p id="ep-story-time">Gus was invited to read a picture book. He did not read the picture book. Silent clip with captions.</p></div>
+        </li>
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-first-pitch.jpg" aria-describedby="ep-first-pitch">
+            <source src="videos/gus-first-pitch.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-first-pitch.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 2</span><h3>Little League Ceremonial First Pitch</h3><p id="ep-first-pitch">A ceremonial first pitch, minus the pitch. Both dugouts are still empty. Silent clip with captions.</p></div>
+        </li>
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-ribbon-cutting.jpg" aria-describedby="ep-ribbon-cutting">
+            <source src="videos/gus-ribbon-cutting.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-ribbon-cutting.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 3</span><h3>Farmers Market Ribbon Cutting</h3><p id="ep-ribbon-cutting">Gus was handed oversized scissors. The ribbon did not survive. The tomatoes are fine. Silent clip with captions.</p></div>
+        </li>
       </ul>
     </section>
 
@@ -119,7 +150,7 @@
     <section class="wrap section" aria-labelledby="screens-h">
       <div class="section-head">
         <h2 id="screens-h">The app so far</h2>
-        <p class="muted">Stage 1 screens from the Next.js app: home, the 1,000-record library, and Gus's own page.</p>
+        <p class="muted">Screens from the Next.js app: home, the 1,000-record library, and Gus's own page.</p>
       </div>
       <div class="screens">
         <figure><img src="assets/screens/home.png" alt="Silly Goose Mutual home page with search and Gus in the hero" loading="lazy" /><figcaption>Home</figcaption></figure>
@@ -136,8 +167,8 @@
         </div>
         <ol class="roadmap">
           <li class="done"><b>1</b><div><h3>Foundation &amp; brand</h3><p>App shell, design system, Gus, schema, local services, home/catalog/library.</p></div><span class="tag">Done</span></li>
-          <li><b>2</b><div><h3>Corpus generator</h3><p>Facts and overrides, 1,000 PDFs, 500 ODT/DOCX, manifest, challenge set.</p></div><span class="tag">Next</span></li>
-          <li><b>3</b><div><h3>Version workflow</h3><p>Uploads, diffs, simulated approvals, publication.</p></div></li>
+          <li class="done"><b>2</b><div><h3>Corpus generator</h3><p>Facts and overrides, 1,000 PDFs, 500 ODT/DOCX, manifest, challenge set — plus Gus's community videos.</p></div><span class="tag">Done</span></li>
+          <li><b>3</b><div><h3>Version workflow</h3><p>Uploads, diffs, simulated approvals, publication.</p></div><span class="tag">Next</span></li>
           <li><b>4</b><div><h3>Ingestion &amp; retrieval</h3><p>Extraction/OCR, chunking, lexical + vector index, scored by the eval harness.</p></div></li>
           <li><b>5</b><div><h3>Guide workspace</h3><p>Web reader, PDF viewer, find-in-guide, cited answers.</p></div></li>
           <li><b>6</b><div><h3>Portfolio research</h3><p>Cross-library search and a state-by-state comparison matrix.</p></div></li>
