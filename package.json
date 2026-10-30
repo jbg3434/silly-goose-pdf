@@ -14,6 +14,8 @@
     "corpus:build": "cd generator && python3 -m sgm.build",
     "corpus:load": "pnpm --filter web corpus:load",
     "setup:python": "python3 -m pip install -r generator/requirements.txt",
-    "site:build": "bash scripts/site/build.sh"
+    "site:build": "bash scripts/site/build.sh",
+    "index:build": "pnpm --filter web index:build",
+    "eval:retrieval": "pnpm --filter web eval:retrieval"
   }
 }

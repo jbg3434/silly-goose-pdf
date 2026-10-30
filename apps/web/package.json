@@ -11,9 +11,12 @@
     "db:seed": "tsx scripts/seed.ts",
     "typecheck": "tsc --noEmit",
     "brand:build": "tsx scripts/build-brand.ts",
-    "corpus:load": "tsx scripts/load-corpus.ts"
+    "corpus:load": "tsx scripts/load-corpus.ts",
+    "index:build": "tsx scripts/index-corpus.ts",
+    "eval:retrieval": "tsx scripts/eval-retrieval.ts"
   },
   "dependencies": {
+    "@huggingface/transformers": "3",
     "next": "14.2.35",
     "pg": "8",
     "react": "^18",
