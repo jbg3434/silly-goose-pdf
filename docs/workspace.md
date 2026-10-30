@@ -27,3 +27,11 @@ citation becomes an abstention. If the model is unreachable, out of quota, or un
 `apps/web/.env.local`; for CI set it as the `OPENCODE_API_KEY` GitHub Actions secret). The Ask box exposes a model
 picker so a different free model can be selected per question when one hits its quota. Another OpenAI-compatible
 provider works by changing the base URL and key env vars.
+
+## Comparison matrix (stage 6)
+
+`/compare` renders the effective value of every fact term across all 50 states for a product and edition, from the
+canonical `facts` + `overrides` tables (the same data the corpus generator renders into the PDFs). Baseline values
+are plain, overridden cells are highlighted with the synthetic rule ID in the tooltip, and each cell links to the
+corresponding state guide. Section and edition selectors scope the matrix. Cross-library search itself is the stage 4
+`/search` page with no scope filters; stage 6 adds the structured comparison on top.

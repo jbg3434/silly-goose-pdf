@@ -15,8 +15,8 @@ A document-intelligence demo over a library of wholly synthetic insurance produc
 | 3 | Version workflow: uploads, diffs, simulated approvals, publication ([docs/workflow.md](docs/workflow.md)) | Done |
 | 4 | Ingestion and retrieval: extraction/OCR, chunking, lexical + vector + hybrid search, eval harness ([docs/retrieval.md](docs/retrieval.md)) | Done |
 | 5 | Guide workspace: text reader, find-in-guide, cited answers via OpenCode ([docs/workspace.md](docs/workspace.md)) | Done |
-| 6 | Portfolio research: cross-library search, comparison matrix | Next |
-| 7 | Hardening: eval suite, accessibility, performance, handoff | Not started |
+| 6 | Portfolio research: /compare state matrix (facts × 50 states, overrides highlighted) | Done |
+| 7 | Hardening: eval suite, accessibility, performance, handoff | Next |
 
 The corpus build generates every guide from canonical facts and state/edition overrides. Each guide page shows the
 published PDF, its source files with SHA-256 hashes, state differences, edition changes, and a simulated approval trail.
