@@ -43,20 +43,17 @@ def doc_dir(out, product, state):
     return out / product["code"] / state
 
 
-def _safely(fn):
-    def wrapper(args):
-        try:
-            return fn(args)
-        except Exception:
-            # Worker exceptions must pickle cleanly back to the parent —
-            # third-party exceptions can hold unpicklable objects (e.g.
-            # PyMuPDF/pikepdf internals) and would surface only as
-            # "cannot pickle 'SwigPyObject' object".
-            raise RuntimeError(traceback.format_exc())
-    return wrapper
-
-
 def _legacy_job(args):
+    # Worker exceptions must pickle cleanly back to the parent — third-party
+    # exceptions can hold unpicklable objects (e.g. PyMuPDF/pikepdf internals)
+    # and would surface only as "cannot pickle 'SwigPyObject' object".
+    try:
+        return _legacy_job_inner(args)
+    except Exception:
+        raise RuntimeError(traceback.format_exc())
+
+
+def _legacy_job_inner(args):
     pid, state, out = args
     c = corpus()
     p = next(x for x in c.products if x["id"] == pid)
@@ -78,6 +75,13 @@ CHALLENGE_DOC_IDS = set()
 
 
 def _odt_job(args):
+    try:
+        return _odt_job_inner(args)
+    except Exception:
+        raise RuntimeError(traceback.format_exc())
+
+
+def _odt_job_inner(args):
     pid, state, out, toc = args
     c = corpus()
     p = next(x for x in c.products if x["id"] == pid)
@@ -135,11 +139,11 @@ def main():
 
     print(f"[1/5] legacy edition-1 PDFs: {len(jobs)}", flush=True)
     with ProcessPoolExecutor(a.workers, initializer=_init_scan_ids, initargs=(sorted(CHALLENGE_DOC_IDS),)) as ex:
-        legacy = {r["document_id"]: r for r in ex.map(_safely(_legacy_job), jobs, chunksize=4)}
+        legacy = {r["document_id"]: r for r in ex.map(_legacy_job, jobs, chunksize=4)}
 
     print(f"[2/5] edition-2 ODT pass 1 + PDF for TOC pages ({time.time() - t0:.0f}s)", flush=True)
     with ProcessPoolExecutor(a.workers) as ex:
-        odts = list(ex.map(_safely(_odt_job), [j + (None,) for j in jobs], chunksize=4))
+        odts = list(ex.map(_odt_job, [j + (None,) for j in jobs], chunksize=4))
     tmp = out / "_pass1"
     soffice_convert([o[1] for o in odts], "pdf", tmp, a.workers)
     tocs = {}
@@ -152,7 +156,7 @@ def main():
     code_of = {p["id"]: p for p in c.products}
     jobs2 = [j + (tocs[c.doc_id(code_of[j[0]], j[1], 2)],) for j in jobs]
     with ProcessPoolExecutor(a.workers) as ex:
-        odts = list(ex.map(_safely(_odt_job), jobs2, chunksize=4))
+        odts = list(ex.map(_odt_job, jobs2, chunksize=4))
     by_dir = {}
     for doc_id, path, _ in odts:
         by_dir.setdefault(Path(path).parent, []).append(path)
