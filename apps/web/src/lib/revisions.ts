@@ -27,8 +27,17 @@ export class WorkflowError extends Error {
 }
 
 async function worker(args: string[]) {
-  const { stdout } = await run("python3", ["-m", "sgm.revision", ...args], { cwd: GENERATOR, maxBuffer: 64 << 20, timeout: 300_000 });
-  return JSON.parse(stdout);
+  try {
+    const { stdout } = await run(process.env.SGM_PYTHON ?? "python3", ["-m", "sgm.revision", ...args], {
+      cwd: GENERATOR,
+      maxBuffer: 64 << 20,
+      timeout: 300_000,
+    });
+    return JSON.parse(stdout);
+  } catch (e) {
+    const stderr = (e as { stderr?: string }).stderr ?? "";
+    throw new Error(`revision worker ${args[0]} failed: ${stderr.trim().split("\n").slice(-3).join(" | ") || (e as Error).message}`);
+  }
 }
 
 const sha256 = (b: Buffer) => createHash("sha256").update(b).digest("hex");
@@ -169,7 +178,7 @@ export async function transition(revisionId: string, to: string, role: Role, act
     if (!needed) throw new WorkflowError("invalid_transition", `Cannot move from ${r.status} to ${to}.`, 409);
     if (needed !== role) throw new WorkflowError("forbidden_role", `Only the ${needed} role can move a revision to ${to}.`, 403);
     const receipt = to === "approved" ? `SIM-DOI-${r.state}-${new Date().getUTCFullYear()}-${randomUUID().slice(0, 8).toUpperCase()}` : null;
-    await client.query("UPDATE revisions SET status = $2, approved_sha256 = CASE WHEN $2 = 'approved' THEN $3 ELSE approved_sha256 END WHERE revision_id = $1", [
+    await client.query("UPDATE revisions SET status = $2::approval_state, approved_sha256 = CASE WHEN $2::text = 'approved' THEN $3 ELSE approved_sha256 END WHERE revision_id = $1", [
       revisionId, to, r.odt_sha,
     ]);
     await client.query(
