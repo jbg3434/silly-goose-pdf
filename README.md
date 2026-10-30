@@ -41,6 +41,12 @@ pnpm corpus:build && pnpm corpus:load # 4. 1,000 PDFs + 500 ODT/DOCX (about 3 mi
 pnpm dev                              # 5. app on http://localhost:3000
 ```
 
+## Project site (GitHub Pages)
+
+`site/` is a static landing page that introduces Gus and the project. `pnpm site:build` assembles it into `_site/` with the
+Gus art and sounds from `apps/web/public`; `.github/workflows/pages.yml` deploys it on pushes to `main`. One-time setup:
+**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
 Other commands: `pnpm lint`, `pnpm typecheck`, `pnpm --filter web brand:build` (regenerate Gus SVG exports),
 `python3 scripts/brand/make_sounds.py apps/web/public/sounds` (regenerate Gus sounds),
 `python3 scripts/brand/make_videos.py apps/web/public/videos` (regenerate the fictional "Gus in the Community" clips).

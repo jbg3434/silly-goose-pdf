@@ -13,6 +13,7 @@
     "typecheck": "pnpm --filter web typecheck",
     "corpus:build": "cd generator && python3 -m sgm.build",
     "corpus:load": "pnpm --filter web corpus:load",
-    "setup:python": "python3 -m pip install -r generator/requirements.txt"
+    "setup:python": "python3 -m pip install -r generator/requirements.txt",
+    "site:build": "bash scripts/site/build.sh"
   }
 }

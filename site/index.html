@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Silly Goose Mutual — meet Gus, and the guide library he guards</title>
+  <meta name="description" content="Silly Goose Mutual is a fictional insurer and a document-intelligence demo: 1,000 synthetic product guides, one goose named Gus." />
+  <meta property="og:title" content="Silly Goose Mutual — meet Gus" />
+  <meta property="og:description" content="1,000 nearly identical synthetic insurance guides. One tiny state difference. Gus will help you find it." />
+  <meta property="og:image" content="assets/screens/home.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="banner" role="note">Synthetic demo content — not an insurance contract or coverage advice</div>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#" class="brand" aria-label="Silly Goose Mutual home">
+        <img src="brand/gus-icon-light.svg" alt="" width="40" height="40" />
+        <span>Silly Goose <em>Mutual</em></span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#gus">Meet Gus</a>
+        <a href="#film">Gus on film</a>
+        <a href="#building">What we're building</a>
+        <a href="#roadmap">Roadmap</a>
+        <a class="btn-ghost" href="https://github.com/jbg3434/silly-goose-pdf">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="gus" aria-labelledby="hero-h">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Hi. I'm Gus.</p>
+          <h1 id="hero-h">The goose who reads the fine print so you don't have to.</h1>
+          <p class="lede">
+            Gus is the loud, puppet-felt mascot of <strong>Silly Goose Mutual</strong>, a fictional insurer we invented to
+            stress-test document intelligence. He guards a library of 1,000 nearly identical product guides — and he honks when
+            you find the one sentence that differs.
+          </p>
+          <div class="cta">
+            <button type="button" class="btn-primary" data-honk="hero">Make Gus honk</button>
+            <a class="btn-outline" href="#building">See what we're building</a>
+          </div>
+          <p class="fineprint">Sound plays only when you click. Gus has not approved any document or determined any coverage.</p>
+        </div>
+        <button type="button" class="hero-gus" data-honk="hero" aria-label="Gus. Click to make him honk.">
+          <span class="bubble" aria-hidden="true">HONK.</span>
+          <img id="hero-gus-img" src="brand/gus-idle-dark.svg" alt="Gus standing by, looking smug" width="320" height="368" />
+        </button>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="poses-h">
+      <div class="section-head">
+        <h2 id="poses-h">Seven moods of Gus</h2>
+        <p class="muted">Every pose renders from one parametric SVG master. Click a card to hear his cue.</p>
+      </div>
+      <ul class="poses">
+        <li><button type="button" class="pose" data-pose="idle" data-cue="honk"><img src="brand/gus-idle-light.svg" alt="" /><strong>Idle</strong><span>Standing by, looking smug</span></button></li>
+        <li><button type="button" class="pose" data-pose="honk" data-cue="double-honk"><img src="brand/gus-honk-light.svg" alt="" /><strong>Honk</strong><span>Beak wide open</span></button></li>
+        <li><button type="button" class="pose" data-pose="flap" data-cue="squawk"><img src="brand/gus-flap-light.svg" alt="" /><strong>Flap</strong><span>Both wings, full effort</span></button></li>
+        <li><button type="button" class="pose" data-pose="celebrate" data-cue="celebrate"><img src="brand/gus-celebrate-light.svg" alt="" /><strong>Celebrate</strong><span>Found a citation</span></button></li>
+        <li><button type="button" class="pose" data-pose="sideeye" data-cue="sad-honk"><img src="brand/gus-sideeye-light.svg" alt="" /><strong>Side-eye</strong><span>Suspicious of that answer</span></button></li>
+        <li><button type="button" class="pose" data-pose="sleepy"><img src="brand/gus-sleepy-light.svg" alt="" /><strong>Sleepy</strong><span>Waiting on the indexer</span></button></li>
+        <li><button type="button" class="pose" data-pose="alarmed" data-cue="squawk"><img src="brand/gus-alarmed-light.svg" alt="" /><strong>Alarmed</strong><span>"Not found in the guide."</span></button></li>
+      </ul>
+    </section>
+
+    <section class="wrap section" id="film" aria-labelledby="film-h">
+      <div class="section-head">
+        <h2 id="film-h">Gus in the community</h2>
+        <p class="muted">Our full-size mascot loves meeting the public. The public has mixed feelings. Staged, fictional cartoon clips; nobody was hurt.</p>
+      </div>
+      <ul class="episodes">
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-story-time.jpg" aria-describedby="ep-story-time">
+            <source src="videos/gus-story-time.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-story-time.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 1</span><h3>Library Story Time</h3><p id="ep-story-time">Gus was invited to read a picture book. He did not read the picture book. Silent clip with captions.</p></div>
+        </li>
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-first-pitch.jpg" aria-describedby="ep-first-pitch">
+            <source src="videos/gus-first-pitch.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-first-pitch.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 2</span><h3>Little League Ceremonial First Pitch</h3><p id="ep-first-pitch">A ceremonial first pitch, minus the pitch. Both dugouts are still empty. Silent clip with captions.</p></div>
+        </li>
+        <li class="episode">
+          <video controls muted playsinline preload="none" poster="videos/gus-ribbon-cutting.jpg" aria-describedby="ep-ribbon-cutting">
+            <source src="videos/gus-ribbon-cutting.mp4" type="video/mp4" />
+            <track kind="captions" src="videos/gus-ribbon-cutting.vtt" srclang="en" label="English" default />
+          </video>
+          <div><span>Episode 3</span><h3>Farmers Market Ribbon Cutting</h3><p id="ep-ribbon-cutting">Gus was handed oversized scissors. The ribbon did not survive. The tomatoes are fine. Silent clip with captions.</p></div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="band" id="building" aria-labelledby="building-h">
+      <div class="wrap">
+        <p class="eyebrow">What we're building</p>
+        <h2 id="building-h">A thousand nearly identical guides. One tiny state difference. Find it.</h2>
+        <p class="lede narrow">
+          A searchable reading room over a wholly synthetic insurance library, built to prove that retrieval can tell
+          <em>Homeowners in New York, edition 2</em> apart from <em>Homeowners in New Jersey, edition 1</em> — and cite exactly
+          where it found the answer.
+        </p>
+        <dl class="stats">
+          <div><dt>Product families</dt><dd>10</dd></div>
+          <div><dt>States</dt><dd>50</dd></div>
+          <div><dt>Editions each</dt><dd>2</dd></div>
+          <div><dt>Synthetic guides</dt><dd>1,000</dd></div>
+        </dl>
+        <div class="pillars">
+          <article><h3>Legacy to editable</h3><p>Edition 1 is a dense, dated PDF. Edition 2 is rebuilt as an open ODT source with a DOCX export and a modern PDF.</p></article>
+          <article><h3>Citations, not vibes</h3><p>Every answer points to the exact guide, edition, section, page, and quoted passage — or says it is not found.</p></article>
+          <article><h3>Eval-first retrieval</h3><p>A deterministic golden dataset scores every search change before vectors or LLMs touch the answer path.</p></article>
+          <article><h3>Simulated approvals</h3><p>Draft, review, filing, and approval are bound to exact artifact hashes in a clearly labeled simulated DOI workflow.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="products-h">
+      <div class="section-head">
+        <h2 id="products-h">The (entirely fictional) product shelf</h2>
+        <p class="muted">Ten families, each written for all 50 states with small, deliberate state-specific overrides.</p>
+      </div>
+      <ul class="products">
+        <li><span>Personal</span><strong>Honk &amp; Roll</strong> Personal Auto</li>
+        <li><span>Personal</span><strong>Nest Egg</strong> Homeowners</li>
+        <li><span>Personal</span><strong>Feather Light</strong> Renters</li>
+        <li><span>Personal</span><strong>Flock Tower</strong> Condominium</li>
+        <li><span>Personal</span><strong>Wide Wing</strong> Personal Umbrella</li>
+        <li><span>Commercial</span><strong>Gaggle</strong> Business Owners</li>
+        <li><span>Commercial</span><strong>Loud Pond</strong> Commercial General Liability</li>
+        <li><span>Commercial</span><strong>Fort Feather</strong> Commercial Property</li>
+        <li><span>Commercial</span><strong>Fleet Flap</strong> Commercial Auto</li>
+        <li><span>Commercial</span><strong>Firewall Fowl</strong> Small Business Cyber</li>
+      </ul>
+    </section>
+
+    <section class="wrap section" aria-labelledby="screens-h">
+      <div class="section-head">
+        <h2 id="screens-h">The app so far</h2>
+        <p class="muted">Screens from the Next.js app: home, the 1,000-record library, and Gus's own page.</p>
+      </div>
+      <div class="screens">
+        <figure><img src="assets/screens/home.png" alt="Silly Goose Mutual home page with search and Gus in the hero" loading="lazy" /><figcaption>Home</figcaption></figure>
+        <figure><img src="assets/screens/library.png" alt="Guide library with product, state, and edition filters" loading="lazy" /><figcaption>Guide library</figcaption></figure>
+        <figure><img src="assets/screens/gus.png" alt="Meet Gus page showing all seven poses and the app icon" loading="lazy" /><figcaption>Meet Gus</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="band band-ivory" id="roadmap" aria-labelledby="roadmap-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="roadmap-h">Roadmap</h2>
+          <p class="muted">Seven staged pull requests, each shippable on its own.</p>
+        </div>
+        <ol class="roadmap">
+          <li class="done"><b>1</b><div><h3>Foundation &amp; brand</h3><p>App shell, design system, Gus, schema, local services, home/catalog/library.</p></div><span class="tag">Done</span></li>
+          <li class="done"><b>2</b><div><h3>Corpus generator</h3><p>Facts and overrides, 1,000 PDFs, 500 ODT/DOCX, manifest, challenge set — plus Gus's community videos.</p></div><span class="tag">Done</span></li>
+          <li><b>3</b><div><h3>Version workflow</h3><p>Uploads, diffs, simulated approvals, publication.</p></div><span class="tag">Next</span></li>
+          <li><b>4</b><div><h3>Ingestion &amp; retrieval</h3><p>Extraction/OCR, chunking, lexical + vector index, scored by the eval harness.</p></div></li>
+          <li><b>5</b><div><h3>Guide workspace</h3><p>Web reader, PDF viewer, find-in-guide, cited answers.</p></div></li>
+          <li><b>6</b><div><h3>Portfolio research</h3><p>Cross-library search and a state-by-state comparison matrix.</p></div></li>
+          <li><b>7</b><div><h3>Hardening</h3><p>Eval suite, accessibility, performance, handoff.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="wrap section closer">
+      <img src="brand/gus-celebrate-light.svg" alt="Gus celebrating" width="160" height="184" />
+      <div>
+        <h2>Follow along</h2>
+        <p class="muted">The code, architecture notes, and every stage's PR live on GitHub.</p>
+        <a class="btn-primary" href="https://github.com/jbg3434/silly-goose-pdf">View the repo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div><p class="footer-title">Silly Goose Mutual</p><p>A fictional mutual insurer created for a document-intelligence demo. Every company, form, rule, rate, limit, and address is invented.</p></div>
+      <div><p class="footer-kicker">Not insurance</p><p>No quotes, binding, applications, or coverage advice. Filing and approval records are a simulated DOI workflow.</p></div>
+      <div><p class="footer-kicker">Gus disclaimer</p><p>Gus is a goose. Gus has not approved any document or determined any coverage.</p></div>
+    </div>
+  </footer>
+
+  <div id="gus-caption" class="caption" role="status" aria-live="polite"></div>
+  <script src="site.js" defer></script>
+</body>
+</html>
