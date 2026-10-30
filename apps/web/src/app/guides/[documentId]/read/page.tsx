@@ -80,7 +80,7 @@ export default async function GuideReader({ params, searchParams }: { params: { 
                 )}
                 <p
                   id={c.chunk_id}
-                  className={`scroll-mt-24 whitespace-pre-wrap break-words rounded-lg p-3 text-sm leading-relaxed ${isMatch ? "bg-amber/40 outline outline-1 outline-amber" : "card"}`}
+                  className={`scroll-mt-24 whitespace-pre-wrap break-all rounded-lg p-3 text-sm leading-relaxed ${isMatch ? "bg-amber/40 outline outline-1 outline-amber" : "card"}`}
                 >
                   <span className="mr-2 select-none align-top text-xs muted">p. {c.page_start}{c.page_end > c.page_start ? `–${c.page_end}` : ""}</span>
                   {c.text}
