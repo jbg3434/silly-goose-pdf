@@ -3,6 +3,7 @@
 The ODT is the editable authoring source; DOCX and PDF are exported from it by LibreOffice.
 The table of contents is filled with page numbers from a first render (two-pass build).
 """
+import os
 import re
 from pathlib import Path
 
@@ -27,7 +28,11 @@ def _gus_png():
         GUS_PNG.parent.mkdir(parents=True, exist_ok=True)
         svg = fitz.open(ROOT / "apps/web/public/brand/gus-idle-light.svg")
         pdf = fitz.open("pdf", svg.convert_to_pdf())
-        pdf[0].get_pixmap(dpi=200, alpha=True).save(GUS_PNG)
+        # Multiple workers can render this concurrently; write to a unique
+        # temp name and rename so no one sees a half-written or clobbered file.
+        tmp = GUS_PNG.with_name(f"gus-cover-{os.getpid()}.png")
+        pdf[0].get_pixmap(dpi=200, alpha=True).save(tmp)
+        os.replace(tmp, GUS_PNG)
     return GUS_PNG
 
 
