@@ -14,11 +14,6 @@ services:
       # Set in the dashboard after deploy (cited answers):
       # - key: OPENCODE_API_KEY
       #   sync: false
-    disk:
-      name: sgm-storage
-      mountPath: /app/storage
-      sizeGB: 1
-
 databases:
   - name: silly-goose-db
     plan: free
