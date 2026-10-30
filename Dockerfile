@@ -32,7 +32,8 @@ RUN su postgres -c "/usr/lib/postgresql/16/bin/initdb -D /tmp/pgdata -E UTF8" \
     && su postgres -c "createdb -h /tmp -p 5432 -O goose silly_goose" \
     && su postgres -c "psql -h /tmp -p 5432 -c \"ALTER USER goose PASSWORD 'goose'\"" \
     && DATABASE_URL=postgres://goose:goose@localhost:5432/silly_goose \
-       sh -c 'pnpm db:migrate && pnpm db:seed && pnpm corpus:load && pnpm index:build' \
+       sh -c 'pnpm db:migrate && pnpm db:seed && pnpm corpus:load \
+         && for i in 0 1 2 3; do SGM_INDEX_PARTITIONS=4 SGM_INDEX_PARTITION=$i pnpm index:build & done; wait' \
     && su postgres -c "pg_dump -h /tmp -p 5432 -Fc silly_goose" > /app/prebuilt.dump \
     && su postgres -c "/usr/lib/postgresql/16/bin/pg_ctl -D /tmp/pgdata -w stop" \
     && rm -rf /tmp/pgdata
