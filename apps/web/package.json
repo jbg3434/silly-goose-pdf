@@ -10,7 +10,8 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
     "typecheck": "tsc --noEmit",
-    "brand:build": "tsx scripts/build-brand.ts"
+    "brand:build": "tsx scripts/build-brand.ts",
+    "corpus:load": "tsx scripts/load-corpus.ts"
   },
   "dependencies": {
     "next": "14.2.35",

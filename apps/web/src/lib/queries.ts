@@ -143,3 +143,56 @@ export async function corpusStats() {
   );
   return rows[0];
 }
+
+export type ArtifactRow = {
+  artifact_id: string;
+  role: string;
+  format: string;
+  sha256: string;
+  byte_size: number;
+  parent_artifact_id: string | null;
+  renderer_version: string | null;
+};
+export type ApprovalRow = { stage: string; actor: string; timestamp: string; notes: string | null; artifact_sha256: string; simulated_receipt_id: string | null };
+export type DifferenceRow = { topic: string; section_title: string; baseline: string; unit: string | null; replacement_value: string | null; reason_code: string; regulation_rule_id: string | null; edition: number };
+
+export async function getGuideDetails(editionId: string, productId: string, state: string, editionNumber: number) {
+  const [artifacts, approvals, differences, imageOnly] = await Promise.all([
+    pool.query<ArtifactRow>(
+      `SELECT artifact_id, role, format, sha256, byte_size::int AS byte_size, parent_artifact_id, renderer_version
+       FROM artifacts WHERE edition_id = $1 ORDER BY CASE format WHEN 'pdf' THEN 0 WHEN 'odt' THEN 1 ELSE 2 END`,
+      [editionId],
+    ),
+    pool.query<ApprovalRow>(
+      `SELECT stage, actor, to_char(timestamp AT TIME ZONE 'UTC', 'YYYY-MM-DD') AS timestamp, notes, artifact_sha256, simulated_receipt_id
+       FROM approval_events WHERE edition_id = $1 ORDER BY timestamp, event_id`,
+      [editionId],
+    ),
+    pool.query<DifferenceRow>(
+      `SELECT DISTINCT ON (f.fact_id) f.topic, s.title AS section_title, f.value AS baseline, f.unit, o.replacement_value,
+              o.reason_code, o.regulation_rule_id, o.edition
+       FROM overrides o JOIN facts f ON f.fact_id = o.fact_id
+       JOIN sections s ON s.product_id = f.product_id AND s.section_id = f.section_id
+       WHERE o.product_id = $1 AND o.state = $2 AND o.edition <= $3
+       ORDER BY f.fact_id, o.edition DESC`,
+      [productId, state, editionNumber],
+    ),
+    pool.query<{ image_only_pages: number[] }>("SELECT image_only_pages FROM documents WHERE edition_id = $1", [editionId]),
+  ]);
+  return {
+    artifacts: artifacts.rows,
+    approvals: approvals.rows,
+    differences: differences.rows,
+    imageOnlyPages: imageOnly.rows[0]?.image_only_pages ?? [],
+  };
+}
+
+export function formatFactValue(value: string | null, unit: string | null) {
+  if (value === null) return "Not offered";
+  if (unit === "USD") return `$${Number(value).toLocaleString("en-US")}`;
+  if (unit === "percent") return `${value}%`;
+  if (!unit) return value;
+  const n = Number(value);
+  const u = n === 1 && unit.endsWith("s") ? unit.slice(0, -1) : unit;
+  return `${Number.isFinite(n) && n >= 1000 ? n.toLocaleString("en-US") : value} ${u}`;
+}

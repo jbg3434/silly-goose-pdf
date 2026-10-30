@@ -1,0 +1,277 @@
+{
+  "build": {
+    "seed": "silly-goose-mutual-corpus-v1",
+    "generator_version": "sgm-gen/2.0.0",
+    "extraction_version": "pymupdf-text-1",
+    "complete": true,
+    "products": 10,
+    "states": 50,
+    "editions": 2
+  },
+  "items": [
+    {
+      "id": "C1a",
+      "kind": "same_phrase_different_limit",
+      "question": "What is the ransomware and extortion sublimit for the New York cyber guide (current edition)?",
+      "product_id": "small-business-cyber",
+      "state": "NY",
+      "edition": 2,
+      "document_id": "SGM-CY-NY-E2",
+      "fact_id": "CY.coverages.ransomware",
+      "expected_value": "$500,000",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.coverages.ransomware",
+          "page": 8,
+          "text": "The ransomware and extortion sublimit is $500,000."
+        }
+      ]
+    },
+    {
+      "id": "C1b",
+      "kind": "same_phrase_different_limit",
+      "question": "What is the ransomware and extortion sublimit for the New Jersey cyber guide (current edition)?",
+      "product_id": "small-business-cyber",
+      "state": "NJ",
+      "edition": 2,
+      "document_id": "SGM-CY-NJ-E2",
+      "fact_id": "CY.coverages.ransomware",
+      "expected_value": "$100,000",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.coverages.ransomware",
+          "page": 8,
+          "text": "The ransomware and extortion sublimit is $100,000."
+        }
+      ]
+    },
+    {
+      "id": "C2a",
+      "kind": "introduced_in_edition_2",
+      "question": "Does the Ohio personal auto guide offer rideshare gap coverage, and up to what limit? (edition 2)",
+      "product_id": "personal-auto",
+      "state": "OH",
+      "edition": 2,
+      "document_id": "SGM-PA-OH-E2",
+      "fact_id": "PA.endorsements.rideshare",
+      "expected_value": "$50,000",
+      "expected_conditions": [
+        "Available only when the driver's rideshare platform coverage is primary once a ride is accepted."
+      ],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "PA.endorsements.rideshare",
+          "page": 14,
+          "text": "The rideshare gap endorsement covers the period when a rideshare app is on and no passenger is matched, up to $50,000 per accident."
+        }
+      ]
+    },
+    {
+      "id": "C2b",
+      "kind": "introduced_in_edition_2",
+      "question": "Does the Ohio personal auto guide offer rideshare gap coverage? (edition 1)",
+      "product_id": "personal-auto",
+      "state": "OH",
+      "edition": 1,
+      "document_id": "SGM-PA-OH-E1",
+      "fact_id": "PA.endorsements.rideshare",
+      "expected_value": null,
+      "expected_conditions": [],
+      "answer_present": false,
+      "evidence": []
+    },
+    {
+      "id": "C3a",
+      "kind": "narrow_eligibility_exception",
+      "question": "Can a Florida renter with a pet snake buy the pet damage endorsement?",
+      "product_id": "renters",
+      "state": "FL",
+      "edition": 2,
+      "document_id": "SGM-RN-FL-E2",
+      "fact_id": "RN.endorsements.pet_damage",
+      "expected_value": "$2,500",
+      "expected_conditions": [
+        "Not available for exotic animals, except non-venomous reptiles kept in a locked enclosure."
+      ],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "RN.endorsements.pet_damage",
+          "page": 12,
+          "text": "The pet damage endorsement covers damage to the landlord's property caused by pets, up to $2,500."
+        }
+      ]
+    },
+    {
+      "id": "C3b",
+      "kind": "narrow_eligibility_exception",
+      "question": "Can a Georgia renter with a pet snake buy the pet damage endorsement?",
+      "product_id": "renters",
+      "state": "GA",
+      "edition": 2,
+      "document_id": "SGM-RN-GA-E2",
+      "fact_id": "RN.endorsements.pet_damage",
+      "expected_value": "$2,500",
+      "expected_conditions": [
+        "Not available for exotic animals."
+      ],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "RN.endorsements.pet_damage",
+          "page": 12,
+          "text": "The pet damage endorsement covers damage to the landlord's property caused by pets, up to $2,500."
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "kind": "table_value_clarified_by_footnote",
+      "question": "What windstorm deductible applies to an inland (non-coastal) Texas commercial property location?",
+      "product_id": "commercial-property",
+      "state": "TX",
+      "edition": 2,
+      "document_id": "SGM-CP-TX-E2",
+      "fact_id": "CP.deductibles.wind",
+      "expected_value": "$2,500",
+      "expected_conditions": [],
+      "answer_present": true,
+      "supporting_fact_ids": [
+        "CP.deductibles.wind",
+        "CP.deductibles.aop"
+      ],
+      "note": "Table shows the windstorm percentage; its footnote says inland locations use the all-other-perils deductible.",
+      "evidence": [
+        {
+          "fact_id": "CP.deductibles.wind",
+          "page": 10,
+          "text": "The windstorm deductible is 2% of building value."
+        },
+        {
+          "fact_id": "CP.deductibles.aop",
+          "page": 10,
+          "text": "The standard all-other-perils deductible is $2,500."
+        }
+      ]
+    },
+    {
+      "id": "C5a",
+      "kind": "answer_absent_in_state",
+      "question": "What excess uninsured motorist limit is available on a Texas personal umbrella?",
+      "product_id": "personal-umbrella",
+      "state": "TX",
+      "edition": 2,
+      "document_id": "SGM-PU-TX-E2",
+      "fact_id": "PU.endorsements.um_excess",
+      "expected_value": null,
+      "expected_conditions": [],
+      "answer_present": false,
+      "evidence": []
+    },
+    {
+      "id": "C5b",
+      "kind": "answer_absent_in_state",
+      "question": "What excess uninsured motorist limit is available on an Oklahoma personal umbrella?",
+      "product_id": "personal-umbrella",
+      "state": "OK",
+      "edition": 2,
+      "document_id": "SGM-PU-OK-E2",
+      "fact_id": "PU.endorsements.um_excess",
+      "expected_value": "$1,000,000",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "PU.endorsements.um_excess",
+          "page": 14,
+          "text": "Excess uninsured and underinsured motorist coverage is available up to $1,000,000."
+        }
+      ]
+    },
+    {
+      "id": "C6a",
+      "kind": "edition_change",
+      "question": "What is the cyber business interruption waiting period in New York, edition 1?",
+      "product_id": "small-business-cyber",
+      "state": "NY",
+      "edition": 1,
+      "document_id": "SGM-CY-NY-E1",
+      "fact_id": "CY.waiting.bi_wait",
+      "expected_value": "8 hours",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.waiting.bi_wait",
+          "page": 16,
+          "text": "Business interruption coverage begins after a waiting period of 8 hours."
+        }
+      ]
+    },
+    {
+      "id": "C6b",
+      "kind": "edition_change",
+      "question": "What is the cyber business interruption waiting period in New York, edition 2?",
+      "product_id": "small-business-cyber",
+      "state": "NY",
+      "edition": 2,
+      "document_id": "SGM-CY-NY-E2",
+      "fact_id": "CY.waiting.bi_wait",
+      "expected_value": "6 hours",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.waiting.bi_wait",
+          "page": 17,
+          "text": "Business interruption coverage begins after a waiting period of 6 hours."
+        }
+      ]
+    },
+    {
+      "id": "C6c",
+      "kind": "multi_state_comparison",
+      "question": "What is the cyber business interruption waiting period in New Jersey, edition 2?",
+      "product_id": "small-business-cyber",
+      "state": "NJ",
+      "edition": 2,
+      "document_id": "SGM-CY-NJ-E2",
+      "fact_id": "CY.waiting.bi_wait",
+      "expected_value": "12 hours",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.waiting.bi_wait",
+          "page": 17,
+          "text": "Business interruption coverage begins after a waiting period of 12 hours."
+        }
+      ]
+    },
+    {
+      "id": "C6d",
+      "kind": "multi_state_comparison",
+      "question": "What is the cyber business interruption waiting period in Pennsylvania, edition 2?",
+      "product_id": "small-business-cyber",
+      "state": "PA",
+      "edition": 2,
+      "document_id": "SGM-CY-PA-E2",
+      "fact_id": "CY.waiting.bi_wait",
+      "expected_value": "10 hours",
+      "expected_conditions": [],
+      "answer_present": true,
+      "evidence": [
+        {
+          "fact_id": "CY.waiting.bi_wait",
+          "page": 17,
+          "text": "Business interruption coverage begins after a waiting period of 10 hours."
+        }
+      ]
+    }
+  ]
+}

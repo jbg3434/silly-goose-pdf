@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StatusPill } from "@/components/DocumentCard";
 import { Gus } from "@/components/gus/Gus";
-import { getDocument } from "@/lib/queries";
+import { formatFactValue, getDocument, getGuideDetails } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +15,8 @@ export default async function Guide({ params }: { params: { documentId: string }
   const r = await getDocument(params.documentId);
   if (!r) notFound();
   const { doc, lineage } = r;
+  const details = await getGuideDetails(doc.edition_id, doc.product_id, doc.state, doc.edition_number);
+  const pdf = details.artifacts.find((a) => a.format === "pdf");
   return (
     <div className="container-page py-10">
       <nav aria-label="Breadcrumb" className="text-sm muted">
@@ -43,16 +45,87 @@ export default async function Guide({ params }: { params: { documentId: string }
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
-        <section className="card flex flex-col items-center gap-4 p-10 text-center" aria-labelledby="reader-h">
-          <Gus pose="sleepy" size={130} decorative />
-          <h2 id="reader-h" className="font-serif text-2xl">
-            This guide has not been generated yet
-          </h2>
-          <p className="max-w-lg text-sm muted">
-            The catalog record and edition lineage exist, but the PDF, editable source, and reading view are produced by the corpus
-            build. Until then there is nothing to read, search, or cite for this guide, and it is excluded from any coverage claims.
-          </p>
-        </section>
+        <div className="space-y-6">
+          {pdf ? (
+            <section className="card overflow-hidden" aria-labelledby="reader-h">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b p-4" style={{ borderColor: "var(--border)" }}>
+                <div>
+                  <h2 id="reader-h" className="font-semibold">
+                    Published PDF · {doc.page_count} pages
+                  </h2>
+                  <p className="text-xs muted">
+                    {doc.edition_number === 1 ? "Immutable inbound legacy PDF" : "Rendered from the approved ODT source"} · SHA-256{" "}
+                    <code>{pdf.sha256.slice(0, 16)}…</code>
+                  </p>
+                </div>
+                <a className="btn btn-secondary" href={`/api/artifacts/${pdf.artifact_id}`}>
+                  Download PDF
+                </a>
+              </div>
+              {details.imageOnlyPages.length > 0 && (
+                <p className="bg-ivory-200 px-4 py-2 text-xs dark:bg-navy-700" role="note">
+                  Pages {details.imageOnlyPages.join(" and ")} are scanned images with no text layer. They are flagged for OCR
+                  with low extraction confidence.
+                </p>
+              )}
+              <iframe
+                title={`${doc.display_name} ${doc.state_name} edition ${doc.edition_number} PDF`}
+                src={`/api/artifacts/${pdf.artifact_id}?inline=1`}
+                className="h-[75vh] w-full bg-white"
+              />
+            </section>
+          ) : (
+            <section className="card flex flex-col items-center gap-4 p-10 text-center" aria-labelledby="reader-h">
+              <Gus pose="sleepy" size={130} decorative />
+              <h2 id="reader-h" className="font-serif text-2xl">
+                This guide has not been generated yet
+              </h2>
+              <p className="max-w-lg text-sm muted">
+                Run the corpus build and load it to create this guide. Until then it is excluded from search and coverage claims.
+              </p>
+            </section>
+          )}
+
+          {details.differences.length > 0 && (
+            <section className="card p-4" aria-labelledby="diff-h">
+              <h2 id="diff-h" className="font-semibold">
+                {doc.state_name} differences from the {doc.family} baseline
+              </h2>
+              <div className="mt-3 overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="muted">
+                    <tr>
+                      <th className="py-1 pr-3 font-medium">Term</th>
+                      <th className="py-1 pr-3 font-medium">Baseline</th>
+                      <th className="py-1 pr-3 font-medium">This guide</th>
+                      <th className="py-1 font-medium">Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {details.differences.map((d) => (
+                      <tr key={d.topic} className="border-t" style={{ borderColor: "var(--border)" }}>
+                        <td className="py-1.5 pr-3">
+                          {d.topic}
+                          <span className="block text-xs muted">{d.section_title}</span>
+                        </td>
+                        <td className="py-1.5 pr-3">{formatFactValue(d.baseline, d.unit)}</td>
+                        <td className="py-1.5 pr-3 font-medium">
+                          {formatFactValue(d.replacement_value, d.unit)}
+                          {d.edition === 2 && <span className="ml-1 text-xs text-teal">(edition 2)</span>}
+                        </td>
+                        <td className="py-1.5 text-xs muted">
+                          {d.reason_code.replace(/_/g, " ").toLowerCase()}
+                          {d.regulation_rule_id && <span className="block">Synthetic rule {d.regulation_rule_id}</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-2 text-xs muted">Rule references are fictional synthetic-demo rules, not real regulations.</p>
+            </section>
+          )}
+        </div>
 
         <aside aria-labelledby="lineage-h" className="card h-fit p-4">
           <h2 id="lineage-h" className="font-semibold">
@@ -78,6 +151,52 @@ export default async function Guide({ params }: { params: { documentId: string }
               </li>
             ))}
           </ol>
+          {doc.change_summary && (
+            <>
+              <h2 className="mt-6 font-semibold">What changed in this edition</h2>
+              <ul className="mt-2 space-y-1 text-sm">
+                {doc.change_summary.split("; ").map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </>
+          )}
+          {details.artifacts.length > 0 && (
+            <>
+              <h2 className="mt-6 font-semibold">Source files</h2>
+              <ul className="mt-2 space-y-2 text-sm">
+                {details.artifacts.map((a) => (
+                  <li key={a.artifact_id}>
+                    <a className="link font-medium" href={`/api/artifacts/${a.artifact_id}`}>
+                      {a.format.toUpperCase()}
+                    </a>{" "}
+                    <span className="muted">
+                      · {a.role.replace(/-/g, " ")} · {(a.byte_size / 1024).toFixed(0)} KB
+                    </span>
+                    <code className="block truncate text-xs muted" title={a.sha256}>
+                      {a.sha256}
+                    </code>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {details.approvals.length > 0 && (
+            <>
+              <h2 className="mt-6 font-semibold">Approval history</h2>
+              <p className="text-xs muted">Simulated DOI workflow. No real filing was made.</p>
+              <ol className="mt-2 space-y-2 border-l pl-3 text-sm" style={{ borderColor: "var(--border)" }}>
+                {details.approvals.map((e) => (
+                  <li key={`${e.stage}-${e.timestamp}`}>
+                    <span className="font-medium capitalize">{e.stage.replace(/_/g, " ")}</span>{" "}
+                    <span className="muted">· {e.timestamp}</span>
+                    <span className="block text-xs muted">{e.actor}</span>
+                    {e.simulated_receipt_id && <span className="block text-xs">Receipt {e.simulated_receipt_id}</span>}
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
         </aside>
       </div>
     </div>

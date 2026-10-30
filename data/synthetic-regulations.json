@@ -1,0 +1,1605 @@
+{
+  "disclaimer": "All references are fictional synthetic-demo rules. They are not real statutes, regulations, bulletins, or filing requirements.",
+  "states": {
+    "AL": [
+      {
+        "rule_id": "SGM-AL-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AL-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AL-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AL-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AL-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "AK": [
+      {
+        "rule_id": "SGM-AK-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AK-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AK-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AK-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AK-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "AZ": [
+      {
+        "rule_id": "SGM-AZ-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AZ-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AZ-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AZ-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AZ-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "AR": [
+      {
+        "rule_id": "SGM-AR-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AR-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AR-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AR-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-AR-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "CA": [
+      {
+        "rule_id": "SGM-CA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "CO": [
+      {
+        "rule_id": "SGM-CO-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CO-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CO-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CO-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CO-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "CT": [
+      {
+        "rule_id": "SGM-CT-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CT-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CT-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CT-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-CT-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "DE": [
+      {
+        "rule_id": "SGM-DE-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-DE-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-DE-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-DE-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-DE-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "FL": [
+      {
+        "rule_id": "SGM-FL-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-FL-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-FL-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-FL-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-FL-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "GA": [
+      {
+        "rule_id": "SGM-GA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-GA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-GA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-GA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-GA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "HI": [
+      {
+        "rule_id": "SGM-HI-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-HI-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-HI-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-HI-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-HI-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "ID": [
+      {
+        "rule_id": "SGM-ID-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ID-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ID-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ID-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ID-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "IL": [
+      {
+        "rule_id": "SGM-IL-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IL-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IL-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IL-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IL-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "IN": [
+      {
+        "rule_id": "SGM-IN-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IN-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IN-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IN-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IN-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "IA": [
+      {
+        "rule_id": "SGM-IA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-IA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "KS": [
+      {
+        "rule_id": "SGM-KS-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KS-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KS-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KS-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KS-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "KY": [
+      {
+        "rule_id": "SGM-KY-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KY-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KY-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KY-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-KY-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "LA": [
+      {
+        "rule_id": "SGM-LA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-LA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-LA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-LA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-LA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "ME": [
+      {
+        "rule_id": "SGM-ME-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ME-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ME-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ME-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ME-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MD": [
+      {
+        "rule_id": "SGM-MD-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MD-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MD-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MD-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MD-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MA": [
+      {
+        "rule_id": "SGM-MA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MI": [
+      {
+        "rule_id": "SGM-MI-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MI-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MI-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MI-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MI-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MN": [
+      {
+        "rule_id": "SGM-MN-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MN-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MN-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MN-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MN-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MS": [
+      {
+        "rule_id": "SGM-MS-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MS-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MS-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MS-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MS-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MO": [
+      {
+        "rule_id": "SGM-MO-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MO-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MO-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MO-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MO-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "MT": [
+      {
+        "rule_id": "SGM-MT-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MT-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MT-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MT-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-MT-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NE": [
+      {
+        "rule_id": "SGM-NE-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NE-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NE-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NE-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NE-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NV": [
+      {
+        "rule_id": "SGM-NV-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NV-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NV-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NV-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NV-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NH": [
+      {
+        "rule_id": "SGM-NH-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NH-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NH-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NH-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NH-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NJ": [
+      {
+        "rule_id": "SGM-NJ-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NJ-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NJ-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NJ-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NJ-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NM": [
+      {
+        "rule_id": "SGM-NM-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NM-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NM-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NM-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NM-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NY": [
+      {
+        "rule_id": "SGM-NY-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NY-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NY-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NY-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NY-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "NC": [
+      {
+        "rule_id": "SGM-NC-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NC-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NC-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NC-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-NC-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "ND": [
+      {
+        "rule_id": "SGM-ND-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ND-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ND-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ND-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-ND-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "OH": [
+      {
+        "rule_id": "SGM-OH-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OH-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OH-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OH-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OH-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "OK": [
+      {
+        "rule_id": "SGM-OK-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OK-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OK-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OK-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OK-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "OR": [
+      {
+        "rule_id": "SGM-OR-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OR-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OR-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OR-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-OR-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "PA": [
+      {
+        "rule_id": "SGM-PA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-PA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-PA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-PA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-PA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "RI": [
+      {
+        "rule_id": "SGM-RI-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-RI-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-RI-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-RI-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-RI-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "SC": [
+      {
+        "rule_id": "SGM-SC-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SC-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SC-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SC-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SC-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "SD": [
+      {
+        "rule_id": "SGM-SD-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SD-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SD-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SD-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-SD-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "TN": [
+      {
+        "rule_id": "SGM-TN-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TN-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TN-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TN-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TN-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "TX": [
+      {
+        "rule_id": "SGM-TX-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TX-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TX-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TX-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-TX-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "UT": [
+      {
+        "rule_id": "SGM-UT-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-UT-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-UT-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-UT-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-UT-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "VT": [
+      {
+        "rule_id": "SGM-VT-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VT-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VT-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VT-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VT-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "VA": [
+      {
+        "rule_id": "SGM-VA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-VA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "WA": [
+      {
+        "rule_id": "SGM-WA-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WA-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WA-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WA-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WA-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "WV": [
+      {
+        "rule_id": "SGM-WV-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WV-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WV-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WV-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WV-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "WI": [
+      {
+        "rule_id": "SGM-WI-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WI-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WI-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WI-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WI-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ],
+    "WY": [
+      {
+        "rule_id": "SGM-WY-SYN-100.10",
+        "category": "notice",
+        "title": "Notice and cancellation timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WY-SYN-200.20",
+        "category": "eligibility",
+        "title": "Permitted underwriting and eligibility distinctions",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WY-SYN-300.30",
+        "category": "coverage",
+        "title": "Coverage terms, limits, and optional endorsements",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WY-SYN-400.40",
+        "category": "catastrophe",
+        "title": "Catastrophe binding restrictions and deductibles",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      },
+      {
+        "rule_id": "SGM-WY-SYN-500.50",
+        "category": "claims",
+        "title": "Claim handling and service timing",
+        "authority": "Synthetic State Insurance Rules (demo only)"
+      }
+    ]
+  }
+}

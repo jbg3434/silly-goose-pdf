@@ -30,3 +30,16 @@ IDs: lineage `HO-NY`, edition `HO-NY-E2`, document `SGM-HO-NY-E2`.
 `GusProvider` stores preferences in `localStorage` (`sgm.gus.prefs.v1`): sound (muted by default), hide Gus, motion
 (system / reduced / full), and dark mode. Every cue sets a caption shown on screen and announced through a polite live region.
 Reduced motion disables all animation through a root class; "system" follows `prefers-reduced-motion`.
+
+## Corpus generator (stage 2)
+
+- **Python generator** in `generator/sgm`. ReportLab renders the legacy edition-1 PDFs, and odfpy writes the edition-2 ODT
+  sources. LibreOffice exports DOCX and PDF from the ODT, so the editable source and the published PDF come from the same
+  authoring file.
+- **Determinism over convenience:** RNGs are keyed on the committed seed and document identity, and all output metadata is
+  normalized (see `docs/corpus.md`).
+- **Evidence is located, not assumed:** fact pages for edition 2 come from text extraction of the rendered PDF. Edition-1 pages
+  come from ReportLab layout callbacks and are cross-checked against extraction where a text layer exists.
+- **Artifacts are served by checksum:** `/api/artifacts/:id` refuses to serve bytes whose SHA-256 differs from the recorded value.
+- **Mascot videos:** the "Gus in the Community" clips are rendered procedurally (`scripts/brand/make_videos.py`). They are
+  silent, have WebVTT captions, never autoplay, and are labeled as staged fiction.
