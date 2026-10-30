@@ -1,0 +1,55 @@
+{
+  "build": {
+    "seed": "silly-goose-mutual-corpus-v1",
+    "generator_version": "sgm-gen/2.0.0",
+    "extraction_version": "pymupdf-text-1",
+    "complete": true,
+    "products": 10,
+    "states": 50,
+    "editions": 2
+  },
+  "items": [
+    {
+      "id": "E1",
+      "product_id": "personal-umbrella",
+      "state": "WA",
+      "edition": 2,
+      "question": "Does Silly Goose Mutual cover a 50-foot watercraft worth $2.6 million in Washington?",
+      "inputs": {
+        "watercraft_length_feet": 50,
+        "watercraft_value_usd": 2600000,
+        "use": "private recreational use"
+      },
+      "expected_decision": "ineligible",
+      "deciding_facts": [
+        "eligibility.watercraft_max_length",
+        "eligibility.watercraft_max_value",
+        "eligibility.watercraft_use"
+      ],
+      "expected_reason": "The watercraft exceeds both the Washington maximum eligible length of 40 feet and maximum eligible value of $2,000,000.",
+      "document_id": "SGM-PU-WA-E2",
+      "deciding_fact_ids": [
+        "PU.eligibility.watercraft_max_length",
+        "PU.eligibility.watercraft_max_value",
+        "PU.eligibility.watercraft_use"
+      ],
+      "expected_citations": [
+        {
+          "fact_id": "PU.eligibility.watercraft_max_length",
+          "value": "40 feet",
+          "page": 6
+        },
+        {
+          "fact_id": "PU.eligibility.watercraft_max_value",
+          "value": "$2,000,000",
+          "page": 6
+        },
+        {
+          "fact_id": "PU.eligibility.watercraft_use",
+          "value": "private recreational use",
+          "page": 7
+        }
+      ]
+    }
+  ]
+}
