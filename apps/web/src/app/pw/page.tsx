@@ -9,7 +9,7 @@ export default function PasswordGate({
   searchParams: { next?: string; wrong?: string };
 }) {
   // Synthetic demo content — not an insurance contract or coverage advice.
-  if (cookies().get("sgm_auth")?.value === (process.env.SITE_PASSWORD ?? "gusthegoose")) {
+  if (process.env.SITE_PASSWORD && cookies().get("sgm_auth")?.value === process.env.SITE_PASSWORD) {
     redirect(searchParams.next ?? "/");
   }
   return (
