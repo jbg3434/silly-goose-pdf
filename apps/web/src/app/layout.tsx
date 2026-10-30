@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </span>
               </Link>
               <nav aria-label="Primary">
-                <ul className="flex items-center gap-1">
+                <ul className="flex flex-wrap items-center justify-end gap-x-1 gap-y-0.5">
                   {NAV.map((n) => (
                     <li key={n.href}>
                       <Link href={n.href} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-ivory-200 dark:hover:bg-navy-700">

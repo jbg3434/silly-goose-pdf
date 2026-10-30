@@ -94,7 +94,7 @@ prompt-injection attempts, and the 13 stage 2 challenge items. Each query carrie
 top 10. It also counts scope violations (any result outside the query's scope), citation validity (result artifact
 hash matches the guide's published PDF and the page range exists), and latency.
 
-### Measured results (2026-10-30 run, 1,002 guides, 106,295 chunks)
+### Measured results (2026-10-30 run, 1,002 guides, 110,881 chunks)
 
 | Mode | recall@10 | MRR | Scope violations | Citation validity | p50 | p95 |
 | --- | --- | --- | --- | --- | --- | --- |
