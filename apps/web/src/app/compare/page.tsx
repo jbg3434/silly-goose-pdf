@@ -67,7 +67,7 @@ export default async function Compare({ searchParams }: { searchParams: { produc
                 <th className="sticky left-0 z-10 bg-[var(--card)] p-2 font-semibold">{STATES[r.state] ?? r.state}</th>
                 {r.cells.map((cell, ci) => (
                   <td key={matrix.columns[ci].fact_id} className={`max-w-44 break-words p-2 ${cell.overridden ? "bg-teal-50 font-medium text-teal-800 dark:bg-navy-700 dark:text-teal" : "muted"}`}>
-                    <Link href={`/guides/SGM-${matrix.columns[ci].fact_id.split(".")[0]}-${r.state}-E${edition}`} className="hover:underline" title={cell.rule_id ? `synthetic rule ${cell.rule_id}` : "baseline"}>
+                    <Link href={`/guides/SGM-${matrix.columns[ci].fact_id.split(".")[0]}-${r.state}-E${edition}`} className="hover:underline" title={cell.rule_id ? `synthetic rule ${cell.rule_id}` : cell.overridden ? `edition ${cell.edition} override` : "baseline"}>
                       {formatFactValue(cell.value, cell.unit)}
                     </Link>
                   </td>
