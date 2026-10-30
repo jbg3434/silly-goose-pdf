@@ -1,0 +1,8 @@
+.git
+node_modules
+**/.next
+storage
+_site
+venv
+__pycache__
+reports
