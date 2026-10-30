@@ -31,6 +31,7 @@ RUN su postgres -c "/usr/lib/postgresql/16/bin/initdb -D /tmp/pgdata -E UTF8" \
     && su postgres -c "createuser -h /tmp -p 5432 -s goose" \
     && su postgres -c "createdb -h /tmp -p 5432 -O goose silly_goose" \
     && su postgres -c "psql -h /tmp -p 5432 -c \"ALTER USER goose PASSWORD 'goose'\"" \
+    && pnpm --filter web exec tsx scripts/warmup-embed.ts \
     && DATABASE_URL=postgres://goose:goose@localhost:5432/silly_goose \
        sh -c 'pnpm db:migrate && pnpm db:seed && pnpm corpus:load \
          && for i in 0 1 2 3; do SGM_INDEX_PARTITIONS=4 SGM_INDEX_PARTITION=$i pnpm index:build & done; wait' \
