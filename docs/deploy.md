@@ -10,12 +10,16 @@ Synthetic demo content — not an insurance contract or coverage advice.
    - a **free web service** built from the repo's `Dockerfile`,
    - a **free Postgres 16** database (pgvector included).
    Free-tier services can't mount disks and the free 512 MB RAM is too small
-   to index at boot, so the corpus is generated AND fully indexed during the
-   Docker build (which has plenty of RAM) and shipped inside the image as a
-   compressed Postgres dump (~15 min build).
-3. On first boot, `scripts/render-init.sh` restores the pre-indexed dump
-   (~1–3 min), applies any newer migrations, seeds, and starts the app.
+   to index at boot, so the corpus is generated during the Docker build and
+   the fully indexed database ships as a GitHub Release asset
+   (`prebuilt-db-v1`, ~156 MB pg_dump). Build time stays ~7 min — no indexing
+   inside the image and no re-indexing on redeploy.
+3. On first boot, `scripts/render-init.sh` downloads and restores the dump
+   (~2–4 min), applies any newer migrations, seeds, and starts the app.
    Everything — including full-text and vector search — works immediately.
+   If the corpus or index pipeline versions ever change, rebuild the dump
+   locally (`pg_dump -Fc`) and publish a new release, then point the service's
+   `SGM_DUMP_URL` env var at it.
 4. Optional — cited answers: in the web service's **Environment** tab add
    `OPENCODE_API_KEY` (and optionally `SGM_LLM_MODEL`). Without it, the
    "Get a cited answer" button reports unavailable and everything else works.
