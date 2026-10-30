@@ -80,7 +80,7 @@ export default async function Compare({ searchParams }: { searchParams: { produc
       </div>
       <p className="mt-3 text-xs muted">
         {matrix.rows.length} states × {matrix.columns.length} terms · teal = state override from the baseline (edition {edition}) ·
-        click a cell to open that state's guide
+        click a cell to open that state&rsquo;s guide
       </p>
     </div>
   );
