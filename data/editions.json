@@ -1,0 +1,16 @@
+[
+  {
+    "edition": 1,
+    "label": "Edition 1 (Legacy)",
+    "effective_date": "2019-07-01",
+    "revision": "1.0",
+    "source_format": "legacy-pdf"
+  },
+  {
+    "edition": 2,
+    "label": "Edition 2",
+    "effective_date": "2026-01-01",
+    "revision": "2.0",
+    "source_format": "odt"
+  }
+]

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f8f5ec;
+  --fg: #172b3a;
+  --muted: #53616a;
+  --card: #ffffff;
+  --border: #e3dcc8;
+  --accent: #0e6e68;
+}
+.dark {
+  --bg: #0f1e29;
+  --fg: #f8f5ec;
+  --muted: #a9b3b9;
+  --card: #172b3a;
+  --border: #2c4659;
+  --accent: #5cc8c0;
+}
+
+html { background: var(--bg); color: var(--fg); }
+body { @apply font-sans antialiased; }
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .card { background: var(--card); border: 1px solid var(--border); @apply rounded-xl; }
+  .muted { color: var(--muted); }
+  .link { color: var(--accent); @apply underline decoration-1 underline-offset-2 hover:decoration-2; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none; }
+  .btn-primary { @apply btn bg-teal-700 text-white hover:bg-navy; }
+  .btn-secondary { @apply btn border text-[color:var(--fg)] hover:bg-ivory-200 dark:hover:bg-navy-700; border-color: var(--border); }
+  .field { background: var(--card); border: 1px solid var(--border); color: var(--fg); @apply rounded-lg px-3 py-2 text-sm; }
+  .badge-synthetic { @apply inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700; }
+}
+
+:focus-visible { outline: 3px solid #e7a63b; outline-offset: 2px; }
+
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-auto *, .motion-auto *::before, .motion-auto *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.skip-link { @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-navy focus:px-4 focus:py-2 focus:text-ivory; }
+
+.gus-flapping .gus-wing-l { animation: flap .35s ease-in-out 3; }
+.gus-flapping .gus-wing-r { animation: flap-r .35s ease-in-out 3; }
+@keyframes flap { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-18deg); } }
+@keyframes flap-r { 0%,100% { transform: rotate(0); } 50% { transform: rotate(18deg); } }

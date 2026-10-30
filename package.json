@@ -1,0 +1,15 @@
+{
+  "name": "silly-goose-mutual",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "services:up": "docker compose up -d --wait",
+    "services:down": "docker compose down",
+    "db:migrate": "pnpm --filter web db:migrate",
+    "db:seed": "pnpm --filter web db:seed",
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint",
+    "typecheck": "pnpm --filter web typecheck"
+  }
+}
