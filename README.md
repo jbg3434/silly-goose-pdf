@@ -13,7 +13,7 @@ A document-intelligence demo over a library of wholly synthetic insurance produc
 | 1 | Foundation and brand: app, design system, Gus, schema, local services, home/catalog/library | Done |
 | 2 | Corpus generator: facts, overrides, 1,000 PDFs, 500 ODT/DOCX, manifest, challenge set | Done |
 | 3 | Version workflow: uploads, diffs, simulated approvals, publication ([docs/workflow.md](docs/workflow.md)) | Done |
-| 4 | Ingestion and retrieval: extraction/OCR, chunking, lexical + vector index | Not started |
+| 4 | Ingestion and retrieval: extraction/OCR, chunking, lexical + vector + hybrid search, eval harness ([docs/retrieval.md](docs/retrieval.md)) | Done |
 | 5 | Guide workspace: web reader, PDF viewer, find, cited answers | Not started |
 | 6 | Portfolio research: cross-library search, comparison matrix | Not started |
 | 7 | Hardening: eval suite, accessibility, performance, handoff | Not started |
@@ -38,7 +38,8 @@ pnpm install                          # 1. dependencies
 pnpm services:up                      # 2. local services (Postgres + pgvector on :5433)
 pnpm db:migrate && pnpm db:seed       # 3. schema + catalog/lineage seed
 pnpm corpus:build && pnpm corpus:load # 4. 1,000 PDFs + 500 ODT/DOCX (about 3 minutes on 8 cores), then load into Postgres
-pnpm dev                              # 5. app on http://localhost:3000
+pnpm index:build                      # 5. extract/OCR/chunk/embed every published PDF (about 35 minutes on 8 cores; idempotent)
+pnpm dev                              # 6. app on http://localhost:3000 (search at /search, index status at /search/status)
 ```
 
 ## Project site (GitHub Pages)
@@ -47,7 +48,7 @@ pnpm dev                              # 5. app on http://localhost:3000
 Gus art and sounds from `apps/web/public`; `.github/workflows/pages.yml` deploys it on pushes to `main`. One-time setup:
 **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-Other commands: `pnpm lint`, `pnpm typecheck`, `pnpm --filter web brand:build` (regenerate Gus SVG exports),
+Other commands: `pnpm eval:retrieval` (score lexical/vector/hybrid search against `data/ground-truth/eval-queries.json`), `pnpm lint`, `pnpm typecheck`, `pnpm --filter web brand:build` (regenerate Gus SVG exports),
 `python3 scripts/brand/make_sounds.py apps/web/public/sounds` (regenerate Gus sounds),
 `python3 scripts/brand/make_videos.py apps/web/public/videos` (regenerate the fictional "Gus in the Community" clips).
 For a quick partial build: `cd generator && python3 -m sgm.build --only CY,PU --states NY,NJ,PA --out /tmp/sgm`.

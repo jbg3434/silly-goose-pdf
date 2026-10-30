@@ -1,0 +1,20 @@
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS heading TEXT NOT NULL DEFAULT '';
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'provision';
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS bbox JSONB;
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS confidence REAL NOT NULL DEFAULT 1;
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS edition_number INT;
+ALTER TABLE chunks DROP COLUMN IF EXISTS tsv;
+ALTER TABLE chunks ADD COLUMN tsv TSVECTOR GENERATED ALWAYS AS (to_tsvector('english', heading || ' ' || text)) STORED;
+CREATE INDEX IF NOT EXISTS chunks_tsv_idx ON chunks USING GIN (tsv);
+CREATE INDEX IF NOT EXISTS chunks_document_idx ON chunks (document_id);
+CREATE INDEX IF NOT EXISTS chunks_embedding_idx ON chunks USING hnsw (embedding vector_cosine_ops);
+
+ALTER TABLE index_status ADD COLUMN IF NOT EXISTS chunk_count INT;
+ALTER TABLE index_status ADD COLUMN IF NOT EXISTS ocr_pages INT[] NOT NULL DEFAULT '{}';
+ALTER TABLE index_status ADD COLUMN IF NOT EXISTS min_ocr_confidence REAL;
+ALTER TABLE index_status ADD COLUMN IF NOT EXISTS flags JSONB NOT NULL DEFAULT '[]';
+
+ALTER TABLE search_runs ADD COLUMN IF NOT EXISTS mode TEXT;
+ALTER TABLE search_runs ADD COLUMN IF NOT EXISTS latency_ms INT;
+ALTER TABLE search_runs ADD COLUMN IF NOT EXISTS result_count INT;
+ALTER TABLE search_runs ADD COLUMN IF NOT EXISTS request_id TEXT;
