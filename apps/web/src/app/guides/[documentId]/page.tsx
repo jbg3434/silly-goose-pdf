@@ -58,9 +58,14 @@ export default async function Guide({ params }: { params: { documentId: string }
                     <code>{pdf.sha256.slice(0, 16)}…</code>
                   </p>
                 </div>
-                <a className="btn btn-secondary" href={`/api/artifacts/${pdf.artifact_id}`}>
-                  Download PDF
-                </a>
+                <div className="flex gap-2">
+                  <Link className="btn btn-secondary" href={`/guides/${doc.document_id}/read`}>
+                    Text reader
+                  </Link>
+                  <a className="btn btn-secondary" href={`/api/artifacts/${pdf.artifact_id}`}>
+                    Download PDF
+                  </a>
+                </div>
               </div>
               {details.imageOnlyPages.length > 0 && (
                 <p className="bg-ivory-200 px-4 py-2 text-xs dark:bg-navy-700" role="note">
@@ -127,7 +132,22 @@ export default async function Guide({ params }: { params: { documentId: string }
           )}
         </div>
 
-        <aside aria-labelledby="lineage-h" className="card h-fit min-w-0 p-4">
+        <aside aria-labelledby="lineage-h" className="min-w-0 space-y-4">
+          <div className="card h-fit p-4">
+            <h2 className="font-semibold">Ask this guide</h2>
+            <p className="mt-1 text-xs muted">Cited answers are limited to this guide.</p>
+            <Link href={`/search?document=${doc.document_id}`} className="btn-primary mt-3 block text-center">
+              Search or ask
+            </Link>
+            <form action={`/guides/${doc.document_id}/read`} className="mt-3">
+              <label htmlFor="find" className="text-xs font-semibold">Find in this guide</label>
+              <div className="mt-1 flex gap-1">
+                <input id="find" name="find" className="field min-w-0 flex-1 text-sm" placeholder="e.g. $500,000" />
+                <button className="btn-secondary text-sm">Find</button>
+              </div>
+            </form>
+          </div>
+          <div className="card h-fit min-w-0 p-4">
           <h2 id="lineage-h" className="font-semibold">
             Version lineage
           </h2>
@@ -200,6 +220,7 @@ export default async function Guide({ params }: { params: { documentId: string }
               </ol>
             </>
           )}
+          </div>
         </aside>
       </div>
     </div>

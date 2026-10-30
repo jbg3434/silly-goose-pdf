@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { listProducts, listStates } from "@/lib/queries";
 import { MODES, type Mode, type Scope, ScopeError, type SearchResponse, search } from "@/lib/search";
+import { AskBox } from "@/components/search/AskBox";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Search guides" };
@@ -96,6 +97,12 @@ export default async function SearchPage({ searchParams }: { searchParams: SP })
               <h2 id="results-h" className="text-lg font-semibold" aria-live="polite">
                 {res.results.length} passages <span className="text-sm font-normal muted">· {MODE_LABELS[res.mode]} · {res.latency_ms} ms</span>
               </h2>
+              <div className="mt-3">
+                <AskBox
+                  query={res.query}
+                  scope={{ product_id: product, states: picked.length ? picked : undefined, edition: ed === "1" || ed === "2" ? Number(ed) : undefined, all_editions: ed === "all", document_id: doc }}
+                />
+              </div>
               <p className="mt-1 text-sm muted" data-testid="scope-summary">
                 Scope: {res.scope.document_id ?? (res.scope.product_id ? productName[res.scope.product_id] : "all products")}
                 {" · "}{res.scope.states?.join(", ") ?? "all states"}
@@ -110,14 +117,14 @@ export default async function SearchPage({ searchParams }: { searchParams: SP })
                 </p>
               )}
               <ol className="mt-4 space-y-3">
-                {res.results.map((h) => (
-                  <li key={h.chunk_id} className="card p-4">
+                {res.results.map((h, i) => (
+                  <li key={h.chunk_id} id={`chunk-${h.chunk_id}`} className="card scroll-mt-24 p-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
                       <Link href={`/guides/${h.document_id}`} className="font-semibold underline">
                         {productName[h.product_id]} · {stateName[h.state]} · Edition {h.edition_number}
                       </Link>
                       <span className="muted">
-                        {h.section_title} · p. {h.page_start}{h.page_end > h.page_start ? `–${h.page_end}` : ""}
+                        [{i + 1}] {h.section_title} · p. {h.page_start}{h.page_end > h.page_start ? `–${h.page_end}` : ""}
                         {h.is_current ? "" : " · historical"}
                       </span>
                     </div>
