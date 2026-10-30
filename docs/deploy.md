@@ -8,10 +8,11 @@ Synthetic demo content — not an insurance contract or coverage advice.
    and point it at this repo — `render.yaml` defines everything.
 2. Render creates:
    - a **free web service** built from the repo's `Dockerfile`,
-   - a **free Postgres 16** database (pgvector included),
-   - a **1 GB persistent disk** mounted at `/app/storage` for the corpus.
+   - a **free Postgres 16** database (pgvector included).
+   Free-tier services can't mount disks, so the corpus is generated during the
+   Docker build and lives inside the image (~5–10 min build).
 3. On first boot, `scripts/render-init.sh` applies migrations and seeds,
-   generates the 1,000-guide corpus, loads it, and starts indexing in the
+   loads the 1,000-guide corpus, and starts indexing in the
    background. The site is usable within ~5 minutes; search coverage fills in
    as indexing proceeds (check `/search/status`; full index takes ~30–60 min
    on the free tier).
@@ -24,5 +25,5 @@ Synthetic demo content — not an insurance contract or coverage advice.
 - The free web service **sleeps after ~15 min idle**; the next request takes
   ~30 s to wake. Free Postgres also expires after 90 days (recreate it to
   refresh).
-- Deploys wipe the ephemeral layer but `storage/` persists on the disk, so
-  corpus generation only runs once.
+- Redeploys rebuild the image, so `pnpm corpus:load` and indexing re-run
+  each deploy (deterministic — same corpus, same IDs).

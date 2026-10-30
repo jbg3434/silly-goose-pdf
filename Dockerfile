@@ -14,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 RUN pip3 install --break-system-packages -r generator/requirements.txt \
+    && pnpm corpus:build \
     && pnpm --filter web build
 
 ENV NODE_ENV=production SGM_PYTHON=/usr/bin/python3 PORT=3000

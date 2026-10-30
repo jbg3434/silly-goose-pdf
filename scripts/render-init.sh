@@ -12,10 +12,6 @@ for i in $(seq 1 30); do
 done
 pnpm db:seed
 
-if [ ! -f storage/corpus/manifest.json ]; then
-  echo "generating corpus (first deploy only)…"
-  pnpm corpus:build
-fi
 pnpm corpus:load
 
 echo "indexing corpus in the background…"
