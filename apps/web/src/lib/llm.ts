@@ -1,6 +1,6 @@
 // Chat-provider adapter for cited answers. Default: OpenCode Zen's OpenAI-compatible endpoint.
 export const LLM_BASE_URL = process.env.SGM_LLM_BASE_URL ?? "https://opencode.ai/inference/openai/v1";
-export const LLM_MODEL = process.env.SGM_LLM_MODEL ?? "big-pickle";
+export const LLM_MODEL = process.env.SGM_LLM_MODEL ?? "claude-haiku-5-5";
 
 export class LlmError extends Error {
   constructor(
@@ -11,7 +11,7 @@ export class LlmError extends Error {
   }
 }
 
-export const FREE_MODELS = ["big-pickle", "beam-free", "deepseek-v4.1-flash-free", "glm-5.3-flash-free", "mimo-v2.6-flash-free", "flint-40b-free", "nemotron-3.5-super-vl-free", "nemotron-3.5-lightning-free"];
+export const FREE_MODELS = ["claude-haiku-5-5", "big-pickle", "beam-free", "deepseek-v4.1-flash-free", "glm-5.3-flash-free", "mimo-v2.6-flash-free", "flint-40b-free", "nemotron-3.5-super-vl-free", "nemotron-3.5-lightning-free"];
 
 export async function listModels(): Promise<string[]> {
   const key = process.env.OPENCODE_API_KEY ?? process.env.LLM_API_KEY;
