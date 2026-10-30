@@ -163,6 +163,9 @@ export default async function Guide({ params }: { params: { documentId: string }
           )}
           {details.artifacts.length > 0 && (
             <>
+              <Link href={`/guides/${doc.document_id}/revisions`} className="btn-secondary mt-6 w-full">
+                Revisions and simulated approvals
+              </Link>
               <h2 className="mt-6 font-semibold">Source files</h2>
               <ul className="mt-2 space-y-2 text-sm">
                 {details.artifacts.map((a) => (
