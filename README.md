@@ -12,7 +12,7 @@ A document-intelligence demo over a library of wholly synthetic insurance produc
 | --- | --- | --- |
 | 1 | Foundation and brand: app, design system, Gus, schema, local services, home/catalog/library | Done |
 | 2 | Corpus generator: facts, overrides, 1,000 PDFs, 500 ODT/DOCX, manifest, challenge set | Done |
-| 3 | Version workflow: uploads, diffs, simulated approvals, publication | Not started |
+| 3 | Version workflow: uploads, diffs, simulated approvals, publication ([docs/workflow.md](docs/workflow.md)) | Done |
 | 4 | Ingestion and retrieval: extraction/OCR, chunking, lexical + vector index | Not started |
 | 5 | Guide workspace: web reader, PDF viewer, find, cited answers | Not started |
 | 6 | Portfolio research: cross-library search, comparison matrix | Not started |
