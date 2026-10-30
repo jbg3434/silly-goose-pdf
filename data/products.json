@@ -1,0 +1,82 @@
+[
+  {
+    "id": "personal-auto",
+    "family": "Personal Auto",
+    "line": "personal",
+    "display_name": "Honk & Roll Personal Auto",
+    "code": "PA",
+    "summary": "Liability, physical damage, and roadside options for private passenger vehicles."
+  },
+  {
+    "id": "homeowners",
+    "family": "Homeowners",
+    "line": "personal",
+    "display_name": "Nest Egg Homeowners",
+    "code": "HO",
+    "summary": "Dwelling, contents, and personal liability for owner-occupied homes."
+  },
+  {
+    "id": "renters",
+    "family": "Renters",
+    "line": "personal",
+    "display_name": "Feather Light Renters",
+    "code": "RN",
+    "summary": "Personal property and liability protection for tenants."
+  },
+  {
+    "id": "condominium",
+    "family": "Condominium",
+    "line": "personal",
+    "display_name": "Flock Tower Condominium",
+    "code": "CO",
+    "summary": "Unit-owner coverage for interior improvements, contents, and loss assessment."
+  },
+  {
+    "id": "personal-umbrella",
+    "family": "Personal Umbrella",
+    "line": "personal",
+    "display_name": "Wide Wing Personal Umbrella",
+    "code": "PU",
+    "summary": "Excess personal liability above qualifying underlying policies."
+  },
+  {
+    "id": "business-owners",
+    "family": "Business Owners",
+    "line": "commercial",
+    "display_name": "Gaggle Business Owners",
+    "code": "BO",
+    "summary": "Packaged property and liability for eligible small businesses."
+  },
+  {
+    "id": "commercial-general-liability",
+    "family": "Commercial General Liability",
+    "line": "commercial",
+    "display_name": "Loud Pond Commercial General Liability",
+    "code": "GL",
+    "summary": "Premises, operations, products, and completed operations liability."
+  },
+  {
+    "id": "commercial-property",
+    "family": "Commercial Property",
+    "line": "commercial",
+    "display_name": "Fort Feather Commercial Property",
+    "code": "CP",
+    "summary": "Buildings, business personal property, and business income."
+  },
+  {
+    "id": "commercial-auto",
+    "family": "Commercial Auto",
+    "line": "commercial",
+    "display_name": "Fleet Flap Commercial Auto",
+    "code": "CA",
+    "summary": "Liability and physical damage for business-use vehicles and fleets."
+  },
+  {
+    "id": "small-business-cyber",
+    "family": "Small Business Cyber",
+    "line": "commercial",
+    "display_name": "Firewall Fowl Small Business Cyber",
+    "code": "CY",
+    "summary": "First-party breach response and third-party network liability."
+  }
+]
