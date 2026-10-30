@@ -104,7 +104,7 @@ export async function createRevision(lineageId: string, filename: string, bytes:
   await mkdir(work, { recursive: true });
   const src = path.join(work, `${revisionId}.${ext}`);
   await copyFile(uploadPath, src);
-  const out = await worker(["ingest", src, base.product_id, work]);
+  const out = await worker(["ingest", src, base.product_id, work, String(base.edition_number + 1)]);
 
   const parent = (
     await pool.query<{ revision_id: string; extracted: unknown }>(

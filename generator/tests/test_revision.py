@@ -9,7 +9,7 @@ import zipfile
 from pathlib import Path
 
 from sgm.model import ROOT
-from sgm.revision import diff, extract, ingest, soffice
+from sgm.revision import diff, edition_labels, extract, ingest, soffice
 
 BASE = ROOT / "storage/corpus/CY/NY/SGM-CY-NY-E2.odt"
 PRODUCT = "small-business-cyber"
@@ -39,6 +39,9 @@ class RevisionDiffTest(unittest.TestCase):
     def test_base_extract_matches_every_fact(self):
         self.assertTrue(all(f["matched"] for f in self.base["facts"].values()))
         self.assertEqual(self.base["facts"]["CY.coverages.ransomware"]["value"], "$500,000")
+
+    def test_edition_labels_read_cover_edition(self):
+        self.assertEqual(edition_labels(BASE), [2])
 
     def test_fact_change_is_a_term_change(self):
         dst = self.tmp / "fact.odt"

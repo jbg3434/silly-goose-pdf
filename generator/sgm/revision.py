@@ -145,7 +145,13 @@ def visual(old_pdf: Path, new_pdf: Path, outdir: Path):
     return dict(pages=pages, changed_pages=[p["page"] for p in pages if p["changed"]])
 
 
-def ingest(path: Path, product_id: str, workdir: Path):
+def edition_labels(odt: Path):
+    with zipfile.ZipFile(odt) as z:
+        text = re.sub(r"<[^>]+>", " ", z.read("content.xml").decode())
+    return sorted({int(n) for n in re.findall(r"Edition (\d+) [·—] [Ee]ffective", text)})
+
+
+def ingest(path: Path, product_id: str, workdir: Path, target_edition: int | None = None):
     workdir.mkdir(parents=True, exist_ok=True)
     report = dict(source_format=path.suffix.lstrip(".").lower(), items=[])
     if report["source_format"] == "docx":
@@ -166,6 +172,9 @@ def ingest(path: Path, product_id: str, workdir: Path):
     for fid, f in ex["facts"].items():
         if not f["matched"]:
             report["items"].append(dict(severity="review", issue=f"{f['topic']} (Section {f['number']}): wording no longer matches the fact template"))
+    stale = [n for n in edition_labels(odt) if target_edition and n != target_edition]
+    if stale:
+        report["items"].append(dict(severity="review", issue=f"Document still says Edition {', '.join(map(str, stale))}; this draft targets Edition {target_edition}. Update the edition, effective date, and revision on the cover and details table."))
     pdf = soffice(odt, "pdf", workdir)
     return dict(odt=str(odt), pdf=str(pdf), report=report, extract=ex)
 
@@ -173,7 +182,7 @@ def ingest(path: Path, product_id: str, workdir: Path):
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "ingest":
-        out = ingest(Path(sys.argv[2]), sys.argv[3], Path(sys.argv[4]))
+        out = ingest(Path(sys.argv[2]), sys.argv[3], Path(sys.argv[4]), int(sys.argv[5]) if len(sys.argv) > 5 else None)
     elif cmd == "extract":
         out = extract(Path(sys.argv[2]), sys.argv[3])
     elif cmd == "diff":
