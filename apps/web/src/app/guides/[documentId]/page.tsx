@@ -44,8 +44,8 @@ export default async function Guide({ params }: { params: { documentId: string }
         </div>
       </div>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px]">
-        <div className="space-y-6">
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="min-w-0 space-y-6">
           {pdf ? (
             <section className="card overflow-hidden" aria-labelledby="reader-h">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b p-4" style={{ borderColor: "var(--border)" }}>
@@ -127,7 +127,7 @@ export default async function Guide({ params }: { params: { documentId: string }
           )}
         </div>
 
-        <aside aria-labelledby="lineage-h" className="card h-fit p-4">
+        <aside aria-labelledby="lineage-h" className="card h-fit min-w-0 p-4">
           <h2 id="lineage-h" className="font-semibold">
             Version lineage
           </h2>
