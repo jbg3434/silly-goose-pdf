@@ -9,13 +9,13 @@ Synthetic demo content — not an insurance contract or coverage advice.
 2. Render creates:
    - a **free web service** built from the repo's `Dockerfile`,
    - a **free Postgres 16** database (pgvector included).
-   Free-tier services can't mount disks, so the corpus is generated during the
-   Docker build and lives inside the image (~5–10 min build).
-3. On first boot, `scripts/render-init.sh` applies migrations and seeds,
-   loads the 1,000-guide corpus, and starts indexing in the
-   background. The site is usable within ~5 minutes; search coverage fills in
-   as indexing proceeds (check `/search/status`; full index takes ~30–60 min
-   on the free tier).
+   Free-tier services can't mount disks and the free 512 MB RAM is too small
+   to index at boot, so the corpus is generated AND fully indexed during the
+   Docker build (which has plenty of RAM) and shipped inside the image as a
+   compressed Postgres dump (~15 min build).
+3. On first boot, `scripts/render-init.sh` restores the pre-indexed dump
+   (~1–3 min), applies any newer migrations, seeds, and starts the app.
+   Everything — including full-text and vector search — works immediately.
 4. Optional — cited answers: in the web service's **Environment** tab add
    `OPENCODE_API_KEY` (and optionally `SGM_LLM_MODEL`). Without it, the
    "Get a cited answer" button reports unavailable and everything else works.
@@ -25,5 +25,5 @@ Synthetic demo content — not an insurance contract or coverage advice.
 - The free web service **sleeps after ~15 min idle**; the next request takes
   ~30 s to wake. Free Postgres also expires after 90 days (recreate it to
   refresh).
-- Redeploys rebuild the image, so `pnpm corpus:load` and indexing re-run
-  each deploy (deterministic — same corpus, same IDs).
+- Redeploys rebuild the image and re-restore the dump only when the chunks
+  table is empty; an existing populated database is left alone.
