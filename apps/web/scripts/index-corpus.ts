@@ -107,7 +107,16 @@ async function main() {
      ORDER BY d.document_id`,
     [force, versions[0], versions[1], EMBEDDING_ID, only ?? null],
   );
-  console.log(`${rows.length} documents need indexing (${versions.join(", ")}, ${EMBEDDING_ID})`);
+  // Parallel builds can shard the work: SGM_INDEX_PARTITIONS=4 SGM_INDEX_PARTITION=0..3.
+  const partitions = Math.max(1, Number(process.env.SGM_INDEX_PARTITIONS ?? 1));
+  const partition = Math.min(partitions - 1, Number(process.env.SGM_INDEX_PARTITION ?? 0));
+  const shard = rows.filter((_, i) => i % partitions === partition);
+  console.log(
+    `${rows.length} documents need indexing (${versions.join(", ")}, ${EMBEDDING_ID})` +
+      (partitions > 1 ? ` — shard ${partition + 1}/${partitions}: ${shard.length} docs` : ""),
+  );
+  rows.length = 0;
+  rows.push(...shard);
   await pool.query("UPDATE index_status SET state = 'queued', updated_at = now() WHERE document_id = ANY($1)", [rows.map((r) => r.document_id)]);
   let done = 0, failed = 0;
   const t0 = Date.now();
