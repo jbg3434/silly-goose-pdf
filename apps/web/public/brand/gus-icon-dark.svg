@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gus the Goose icon"><title>Gus the Goose icon</title>
 <rect width="64" height="64" rx="14" fill="#F8F5EC"/>
-<path d="M14 54 q18 8 36 0 l-2 -8 q-16 6 -32 0 z" fill="#168F88"/>
-<path d="M20 20 l-2 -10 l7 6 l3 -10 l4 10 l6 -8 v10" fill="#FFFDF6"/>
-<circle cx="30" cy="32" r="17" fill="#FFFDF6"/>
-<circle cx="25" cy="28" r="6" fill="#fff" stroke="#172B3A" stroke-width="1.5"/><circle cx="26" cy="29" r="3" fill="#172B3A"/>
-<circle cx="37" cy="27" r="5" fill="#fff" stroke="#172B3A" stroke-width="1.5"/><circle cx="38" cy="28" r="2.5" fill="#172B3A"/>
-<path d="M40 33 q14 -4 20 4 q-8 6 -20 4 z" fill="#E7A63B" stroke="#B97A16" stroke-width="1.2"/>
+<path d="M12 55 q20 8 39 -1 l-3 -9 q-15 7 -32 0 z" fill="#168F88" stroke="#0E6E68" stroke-width="1.2"/>
+<path d="M18 21 q-3 -11 7 -6 q2 -13 8 -3 q8 -10 8 4 q8 -5 5 6" fill="#F4E5C8" stroke="#172B3A" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M14 33 q0 -17 17 -20 q18 -3 24 12 q5 14 -7 24 q-11 9 -25 3 q-10 -5 -9 -19 z" fill="#FFF8E8" stroke="#172B3A" stroke-width="2"/>
+<ellipse cx="27" cy="29" rx="7" ry="8" fill="#fffdf7" stroke="#172B3A" stroke-width="1.5"/><circle cx="29" cy="31" r="3.2" fill="#172B3A"/><circle cx="30" cy="29.5" r="1" fill="#fff"/>
+<ellipse cx="40" cy="28" rx="6.5" ry="7.5" fill="#fffdf7" stroke="#172B3A" stroke-width="1.5"/><circle cx="42" cy="30" r="3" fill="#172B3A"/><circle cx="43" cy="28.5" r="1" fill="#fff"/>
+<path d="M42 35 q13 -4 19 3 q-7 8 -19 6 q-5 -5 0 -9 z" fill="#E7A63B" stroke="#B97A16" stroke-width="1.6"/>
+<path d="M18 42 q5 4 10 1" fill="none" stroke="#D8C49D" stroke-width="2" stroke-linecap="round"/>
 </svg>
