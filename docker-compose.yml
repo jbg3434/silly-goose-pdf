@@ -1,3 +1,10 @@
+# Silly Goose Mutual dev stack.
+# Synthetic demo content — not an insurance contract or coverage advice.
+#
+# `docker compose up db`        — Postgres only (for `pnpm dev` on the host).
+# `docker compose up`           — full stack: Postgres + app in Docker.
+# The app downloads the pre-indexed corpus dump on first boot (SGM_DUMP_URL),
+# so no indexing ever runs locally either.
 services:
   db:
     image: pgvector/pgvector:pg16
@@ -14,5 +21,20 @@ services:
       interval: 2s
       timeout: 3s
       retries: 30
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://goose:goose@db:5432/silly_goose
+      # Optional: arm the demo gate + cited answers.
+      # GUS_DEMO_PASSWORD_HASH: sha256$<salt>$<hex>
+      # OPENCODE_API_KEY: ...
+      # SGM_DUMP_URL: override the prebuilt dump source
+    ports:
+      - "3100:3000"
+
 volumes:
   sgm-pgdata:
