@@ -51,37 +51,52 @@ export default async function SearchPage({ searchParams }: { searchParams: SP })
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[280px_1fr]">
-        <form action="/search" className="card h-fit min-w-0 space-y-4 p-4" aria-label="Search scope">
+        <form action="/search" className="card h-fit min-w-0 space-y-3 p-4" aria-label="Search scope">
           <div>
             <label htmlFor="q" className="block text-sm font-semibold">Question or phrase</label>
-            <textarea id="q" name="q" defaultValue={q} rows={3} required className="field mt-1 w-full" placeholder="e.g. ransomware sublimit" />
+            <textarea id="q" name="q" defaultValue={q} rows={3} required className="field mt-1 w-full" placeholder="e.g. ransomware sublimit" autoFocus={!q} />
           </div>
-          <div>
-            <label htmlFor="product" className="block text-sm font-semibold">Product</label>
-            <select id="product" name="product" defaultValue={product ?? ""} className="field mt-1 w-full">
-              <option value="">All products</option>
-              {products.map((p) => <option key={p.id} value={p.id}>{p.family}</option>)}
-            </select>
+          {/* Compact scope chips — the current scope reads as removable pills; edits live in Filters. */}
+          <div className="flex flex-wrap gap-1.5 text-xs" aria-label="Current scope">
+            {product && <span className="rounded-full bg-teal/15 px-2.5 py-1 font-medium">{productName[product]}</span>}
+            {picked.map((s) => <span key={s} className="rounded-full bg-teal/15 px-2.5 py-1 font-medium">{s}</span>)}
+            {ed !== "current" && <span className="rounded-full bg-teal/15 px-2.5 py-1 font-medium">{EDITIONS[ed as keyof typeof EDITIONS]}</span>}
+            {doc && <span className="rounded-full bg-teal/15 px-2.5 py-1 font-medium">{doc}</span>}
+            {(product || picked.length || ed !== "current" || doc) && (
+              <Link href={`/search?q=${encodeURIComponent(q)}`} className="rounded-full border px-2.5 py-1 muted" style={{ borderColor: "var(--border)" }}>clear</Link>
+            )}
           </div>
-          <div>
-            <label htmlFor="state" className="block text-sm font-semibold">States</label>
-            <select id="state" name="state" multiple defaultValue={picked} className="field mt-1 h-32 w-full">
-              {states.map((s) => <option key={s.code} value={s.code}>{s.name} ({s.code})</option>)}
-            </select>
-            <p className="mt-1 text-xs muted">Pick two or more to compare; each state gets its own top results.</p>
-          </div>
-          <div>
-            <label htmlFor="edition" className="block text-sm font-semibold">Edition</label>
-            <select id="edition" name="edition" defaultValue={ed} className="field mt-1 w-full">
-              {Object.entries(EDITIONS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="mode" className="block text-sm font-semibold">Retrieval mode</label>
-            <select id="mode" name="mode" defaultValue={mode} className="field mt-1 w-full">
-              {MODES.map((m) => <option key={m} value={m}>{MODE_LABELS[m]}</option>)}
-            </select>
-          </div>
+          <details className="text-sm">
+            <summary className="cursor-pointer font-semibold">Filters</summary>
+            <div className="mt-3 space-y-4">
+              <div>
+                <label htmlFor="product" className="block text-sm font-semibold">Product</label>
+                <select id="product" name="product" defaultValue={product ?? ""} className="field mt-1 w-full">
+                  <option value="">All products</option>
+                  {products.map((p) => <option key={p.id} value={p.id}>{p.family}</option>)}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="state" className="block text-sm font-semibold">States</label>
+                <select id="state" name="state" multiple defaultValue={picked} className="field mt-1 h-32 w-full">
+                  {states.map((s) => <option key={s.code} value={s.code}>{s.name} ({s.code})</option>)}
+                </select>
+                <p className="mt-1 text-xs muted">Pick two or more to compare; each state gets its own top results.</p>
+              </div>
+              <div>
+                <label htmlFor="edition" className="block text-sm font-semibold">Edition</label>
+                <select id="edition" name="edition" defaultValue={ed} className="field mt-1 w-full">
+                  {Object.entries(EDITIONS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="mode" className="block text-sm font-semibold">Retrieval mode</label>
+                <select id="mode" name="mode" defaultValue={mode} className="field mt-1 w-full">
+                  {MODES.map((m) => <option key={m} value={m}>{MODE_LABELS[m]}</option>)}
+                </select>
+              </div>
+            </div>
+          </details>
           {doc && <input type="hidden" name="document" value={doc} />}
           <div className="flex gap-2">
             <button className="btn-primary flex-1">Search</button>
@@ -120,7 +135,7 @@ export default async function SearchPage({ searchParams }: { searchParams: SP })
                 {res.results.map((h, i) => (
                   <li key={h.chunk_id} id={`chunk-${h.chunk_id}`} className="card scroll-mt-24 p-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
-                      <Link href={`/guides/${h.document_id}`} className="font-semibold underline">
+                      <Link href={`/guides/${h.document_id}#s-${h.section_id}`} className="font-semibold underline">
                         {productName[h.product_id]} · {stateName[h.state]} · Edition {h.edition_number}
                       </Link>
                       <span className="muted">

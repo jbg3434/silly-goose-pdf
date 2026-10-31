@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Gus } from "@/components/gus/Gus";
-import { corpusStats, listProducts, listStates } from "@/lib/queries";
+import { corpusStats, listProducts } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [products, states, stats] = await Promise.all([listProducts(), listStates(), corpusStats()]);
+  const [products, stats] = await Promise.all([listProducts(), corpusStats()]);
   return (
     <>
       <section className="bg-navy text-ivory">
@@ -19,31 +19,24 @@ export default async function Home() {
               Silly Goose Mutual is a fictional insurer built to stress-test document intelligence: {stats.products} product families
               × {stats.states} states × 2 editions, from an awkward legacy PDF to a clean, editable successor. Every term is invented.
             </p>
-            <form action="/library" className="mt-8 flex max-w-xl flex-col gap-2 sm:flex-row" role="search">
+            <form action="/search" className="mt-8 flex max-w-xl flex-col gap-2 sm:flex-row" role="search">
               <label htmlFor="home-q" className="sr-only">
-                Search the library by product, state, or document ID
+                Ask or search across all {stats.documents} guides
               </label>
               <input
                 id="home-q"
                 name="q"
+                autoFocus
                 className="w-full rounded-lg border-0 px-4 py-3 text-navy placeholder:text-slate"
-                placeholder="Search by product, state, or document ID"
+                placeholder="Ask anything — e.g. does the WA watercraft guide cap at 40 feet?"
               />
               <button className="btn rounded-lg bg-amber px-6 py-3 text-navy hover:bg-ivory">Search</button>
             </form>
-            <form action="/library" className="mt-3 flex max-w-xl items-center gap-2 text-sm">
-              <label htmlFor="home-state" className="text-ivory-200">
-                Or jump to a state:
-              </label>
-              <select id="home-state" name="state" className="rounded-lg px-3 py-2 text-navy">
-                {states.map((s) => (
-                  <option key={s.code} value={s.code}>
-                    {s.name}
-                  </option>
-                ))}
-              </select>
-              <button className="btn border border-ivory/40 px-3 py-2 hover:bg-navy-700">Go</button>
-            </form>
+            <p className="mt-3 max-w-xl text-sm text-ivory-200">
+              Searches all {stats.documents.toLocaleString()} indexed guides. Or browse{" "}
+              <Link href="/products" className="underline">products by state</Link> or{" "}
+              <Link href="/library" className="underline">all guides</Link>.
+            </p>
           </div>
           <div className="flex justify-center">
             <Gus pose="idle" size={260} idleBob reaction={{ pose: "honk", cue: "honk" }} className="text-left" />
@@ -65,7 +58,7 @@ export default async function Home() {
             <li key={p.id} className="card relative p-4 hover:shadow-md">
               <p className="text-xs font-semibold uppercase tracking-wide muted">{p.line}</p>
               <h3 className="mt-1 font-serif text-lg leading-snug">
-                <Link href={`/library?product=${p.id}`} className="after:absolute after:inset-0 hover:underline">
+                <Link href={`/products/${p.id}`} className="after:absolute after:inset-0 hover:underline">
                   {p.family}
                 </Link>
               </h3>

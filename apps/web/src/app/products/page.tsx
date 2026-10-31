@@ -44,11 +44,11 @@ export default async function Products() {
                     {counts[p.id]?.states ?? 0} states · {counts[p.id]?.editions ?? 0} guide editions
                   </p>
                   <div className="mt-auto flex gap-2 pt-2">
-                    <Link href={`/library?product=${p.id}`} className="btn-primary">
-                      Browse current guides
+                    <Link href={`/products/${p.id}`} className="btn-primary">
+                      Pick a state
                     </Link>
                     <Link href={`/library?product=${p.id}&edition=all`} className="btn-secondary">
-                      All editions
+                      All guides
                     </Link>
                   </div>
                 </li>
