@@ -152,5 +152,26 @@ export const search = (body: {
     body: JSON.stringify(body),
   });
 
+export type GuideBlock = {
+  block_id: string;
+  section_id: string;
+  section_title: string;
+  sort_order: number;
+  kind: "heading" | "term" | "table" | "prose" | "footnote" | "callout";
+  content: {
+    number?: string; title?: string; topic?: string; statement?: string;
+    value?: string; unit?: string; conditions?: string[];
+    overridden?: boolean; footnotes?: string[];
+    caption?: string; columns?: string[]; rows?: string[][];
+  };
+  fact_ids: string[];
+  page_start: number | null;
+  page_end: number | null;
+  review_state: string;
+};
+export type BlocksResponse = { document_id: string; blocks: GuideBlock[] };
+export const documentBlocks = (id: string) =>
+  call<BlocksResponse>(`/api/v1/documents/${encodeURIComponent(id)}/blocks`);
+
 export const pdfUrl = (artifactId: string) => `${BASE_URL}/api/artifacts/${artifactId}`;
 export { BASE_URL };
