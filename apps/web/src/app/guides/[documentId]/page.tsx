@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StatusPill } from "@/components/DocumentCard";
-import { Gus } from "@/components/gus/Gus";
+import { pool } from "@/lib/db";
 import { formatFactValue, getDocument, getGuideDetails } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
@@ -11,23 +11,42 @@ export async function generateMetadata({ params }: { params: { documentId: strin
   return { title: r ? `${r.doc.display_name} — ${r.doc.state_name}, edition ${r.doc.edition_number}` : "Guide not found" };
 }
 
+type Block = {
+  block_id: string; section_id: string; section_title: string; sort_order: number;
+  kind: string;
+  content: {
+    number?: string; title?: string; topic?: string; statement?: string;
+    overridden?: boolean; footnotes?: string[];
+    caption?: string; columns?: string[]; rows?: string[][];
+  };
+  fact_ids: string[]; page_start: number | null; page_end: number | null;
+};
+
+function pageRef(b: Block) {
+  if (b.page_start == null) return null;
+  return `source p. ${b.page_start}${b.page_end != null && b.page_end > b.page_start ? `–${b.page_end}` : ""}`;
+}
+
 export default async function Guide({ params }: { params: { documentId: string } }) {
   const r = await getDocument(params.documentId);
   if (!r) notFound();
   const { doc, lineage } = r;
   const details = await getGuideDetails(doc.edition_id, doc.product_id, doc.state, doc.edition_number);
   const pdf = details.artifacts.find((a) => a.format === "pdf");
+  const { rows: blocks } = await pool.query<Block>(
+    `SELECT block_id, section_id, section_title, sort_order, kind, content, fact_ids, page_start, page_end
+     FROM guide_blocks WHERE document_id = $1 ORDER BY sort_order`,
+    [doc.document_id],
+  );
+  const sections = blocks.filter((b) => b.kind === "heading");
   return (
     <div className="container-page py-10">
       <nav aria-label="Breadcrumb" className="text-sm muted">
-        <Link href="/library" className="link">
-          Library
-        </Link>{" "}
-        /{" "}
-        <Link href={`/library?product=${doc.product_id}`} className="link">
-          {doc.family}
-        </Link>{" "}
-        / {doc.state_name}
+        <Link href="/products" className="link">Products</Link>
+        {" / "}
+        <Link href={`/products/${doc.product_id}`} className="link">{doc.family}</Link>
+        {" / "}
+        {doc.state_name}
       </nav>
       <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -37,65 +56,110 @@ export default async function Guide({ params }: { params: { documentId: string }
           <p className="mt-1 muted">
             Edition {doc.edition_number} · Revision {doc.revision} · Effective {doc.effective_date} · {doc.document_id}
           </p>
+          {lineage.length > 1 && (
+            <p className="mt-1 text-sm muted">
+              Other editions:{" "}
+              {lineage.filter((e) => e.document_id !== doc.document_id).map((e) => (
+                <Link key={e.document_id} className="link mr-3" href={`/guides/${e.document_id}`}>
+                  Edition {e.edition_number}
+                </Link>
+              ))}
+            </p>
+          )}
         </div>
         <div className="flex items-center gap-2">
+          {pdf && <a href={`/api/artifacts/${pdf.artifact_id}`} className="btn-primary">View source PDF</a>}
           <span className="badge-synthetic">Synthetic</span>
           <StatusPill state={doc.publication_state} />
         </div>
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div className="min-w-0 space-y-6">
-          {pdf ? (
-            <section className="card overflow-hidden" aria-labelledby="reader-h">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b p-4" style={{ borderColor: "var(--border)" }}>
-                <div>
-                  <h2 id="reader-h" className="font-semibold">
-                    Published PDF · {doc.page_count} pages
-                  </h2>
-                  <p className="text-xs muted">
-                    {doc.edition_number === 1 ? "Immutable inbound legacy PDF" : "Rendered from the approved ODT source"} · SHA-256{" "}
-                    <code>{pdf.sha256.slice(0, 16)}…</code>
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  <Link className="btn btn-primary" href={`/guides/${doc.document_id}/guide`}>
-                    Guide view
-                  </Link>
-                  <Link className="btn btn-secondary" href={`/guides/${doc.document_id}/read`}>
-                    Text reader
-                  </Link>
-                  <a className="btn btn-secondary" href={`/api/artifacts/${pdf.artifact_id}`}>
-                    Download PDF
-                  </a>
-                </div>
-              </div>
-              {details.imageOnlyPages.length > 0 && (
-                <p className="bg-ivory-200 px-4 py-2 text-xs dark:bg-navy-700" role="note">
-                  Pages {details.imageOnlyPages.join(" and ")} are scanned images with no text layer. They are flagged for OCR
-                  with low extraction confidence.
-                </p>
-              )}
-              <iframe
-                title={`${doc.display_name} ${doc.state_name} edition ${doc.edition_number} PDF`}
-                src={`/api/artifacts/${pdf.artifact_id}?inline=1`}
-                className="h-[75vh] w-full bg-white"
-              />
-            </section>
+        <div className="min-w-0">
+          {sections.length > 0 ? (
+            <div className="grid gap-6 xl:grid-cols-[220px_minmax(0,1fr)]">
+              <nav aria-label="Sections" className="card h-fit max-h-[70vh] overflow-auto p-4 text-sm xl:sticky xl:top-4">
+                <p className="font-semibold">Contents</p>
+                <ul className="mt-2 space-y-1">
+                  {sections.map((s) => (
+                    <li key={s.block_id}>
+                      <a href={`#s-${s.section_id}`} className="link">{s.content.number} {s.content.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <article className="min-w-0 space-y-4">
+                {blocks.map((b) => {
+                  if (b.kind === "heading") {
+                    return (
+                      <h2 key={b.block_id} id={`s-${b.section_id}`} className="scroll-mt-24 border-b pb-2 pt-4 font-serif text-2xl" style={{ borderColor: "var(--border)" }}>
+                        {b.content.number} {b.content.title}
+                      </h2>
+                    );
+                  }
+                  if (b.kind === "term") {
+                    return (
+                      <div key={b.block_id} className="card p-4">
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <h3 className="font-semibold">{b.content.topic}</h3>
+                          {pageRef(b) && (
+                            <span className="text-xs muted" title="Source page in the immutable PDF">{pageRef(b)}</span>
+                          )}
+                        </div>
+                        <p className="mt-1 text-sm leading-relaxed">{b.content.statement}</p>
+                        <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                          {b.content.overridden && (
+                            <span className="rounded bg-amber/60 px-2 py-0.5 font-medium text-navy">State override</span>
+                          )}
+                          {b.content.footnotes?.map((f, i) => (
+                            <span key={i} className="rounded border px-2 py-0.5 muted" style={{ borderColor: "var(--border)" }}>{f}</span>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  if (b.kind === "table") {
+                    return (
+                      <div key={b.block_id} className="card overflow-x-auto p-4">
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <h3 className="font-semibold">{b.content.caption}</h3>
+                          {pageRef(b) && <span className="text-xs muted">{pageRef(b)}</span>}
+                        </div>
+                        <table className="mt-2 w-full text-sm">
+                          <thead>
+                            <tr className="border-b text-left" style={{ borderColor: "var(--border)" }}>
+                              {b.content.columns?.map((c) => <th key={c} className="py-1 pr-4 font-semibold">{c}</th>)}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {b.content.rows?.map((row, i) => (
+                              <tr key={i} className="border-b last:border-0" style={{ borderColor: "var(--border)" }}>
+                                {row.map((cell, j) => (
+                                  <td key={j} className={`py-1.5 pr-4 ${row[2] !== "baseline" && j === 1 ? "font-medium text-teal-700" : ""}`}>{cell}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    );
+                  }
+                  return null;
+                })}
+              </article>
+            </div>
           ) : (
-            <section className="card flex flex-col items-center gap-4 p-10 text-center" aria-labelledby="reader-h">
-              <Gus pose="sleepy" size={130} decorative />
-              <h2 id="reader-h" className="font-serif text-2xl">
-                This guide has not been generated yet
-              </h2>
-              <p className="max-w-lg text-sm muted">
-                Run the corpus build and load it to create this guide. Until then it is excluded from search and coverage claims.
+            <section className="card p-6" aria-labelledby="no-guide-h">
+              <h2 id="no-guide-h" className="font-serif text-2xl">Structured view not built yet</h2>
+              <p className="mt-2 text-sm muted">
+                Run <code>pnpm --filter web blocks:build</code> to derive guide blocks for this document.
+                {pdf && <> The <a className="link" href={`/api/artifacts/${pdf.artifact_id}`}>source PDF</a> is available meanwhile.</>}
               </p>
             </section>
           )}
 
           {details.differences.length > 0 && (
-            <section className="card p-4" aria-labelledby="diff-h">
+            <section className="card mt-6 p-4" aria-labelledby="diff-h">
               <h2 id="diff-h" className="font-semibold">
                 {doc.state_name} differences from the {doc.family} baseline
               </h2>
