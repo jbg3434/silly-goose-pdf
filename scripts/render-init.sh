@@ -29,4 +29,10 @@ echo "applying any newer migrations…"
 pnpm db:migrate
 pnpm db:seed
 
+# Structured guide view: build GuideBlocks if the dump predates them.
+if [ "$(psql "$DATABASE_URL" -Atc "SELECT count(*) FROM guide_blocks" 2>/dev/null || echo 0)" = "0" ]; then
+  echo "building guide blocks (~2 min, no embeddings needed)…"
+  pnpm --filter web blocks:build || echo "guide-block build failed (guide view will be unavailable)"
+fi
+
 exec pnpm --filter web start
