@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { AUTH_COOKIE, gateEnabled, verifySession } from "./lib/auth";
 
-const PASSWORD = process.env.SITE_PASSWORD;
-const COOKIE = "sgm_auth";
-
-export function middleware(req: NextRequest) {
-  // Gate is only active when SITE_PASSWORD is set (e.g. on the deployed service).
-  if (!PASSWORD) return NextResponse.next();
+export async function middleware(req: NextRequest) {
+  // Gate is only active when a server-side secret is configured.
+  if (!gateEnabled()) return NextResponse.next();
   const { pathname } = req.nextUrl;
   // Let through the unlock page/API and anything that looks like a static file.
   if (
@@ -15,7 +13,11 @@ export function middleware(req: NextRequest) {
   ) {
     return NextResponse.next();
   }
-  if (req.cookies.get(COOKIE)?.value === PASSWORD) return NextResponse.next();
+  if (await verifySession(req.cookies.get(AUTH_COOKIE)?.value)) return NextResponse.next();
+  // API clients get a 401 rather than an HTML redirect.
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.json({ error: "authentication required" }, { status: 401 });
+  }
   const url = req.nextUrl.clone();
   url.pathname = "/pw";
   url.search = pathname === "/" ? "" : `?next=${encodeURIComponent(pathname + req.nextUrl.search)}`;

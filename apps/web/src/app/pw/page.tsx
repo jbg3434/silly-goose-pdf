@@ -1,15 +1,17 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { AUTH_COOKIE, gateEnabled, verifySession } from "@/lib/auth";
 
 export const metadata = { title: "Silly Goose Mutual — sign in" };
+export const dynamic = "force-dynamic";
 
-export default function PasswordGate({
+export default async function PasswordGate({
   searchParams,
 }: {
-  searchParams: { next?: string; wrong?: string };
+  searchParams: { next?: string; wrong?: string; rate?: string; nogate?: string };
 }) {
   // Synthetic demo content — not an insurance contract or coverage advice.
-  if (process.env.SITE_PASSWORD && cookies().get("sgm_auth")?.value === process.env.SITE_PASSWORD) {
+  if (gateEnabled() && (await verifySession(cookies().get(AUTH_COOKIE)?.value))) {
     redirect(searchParams.next ?? "/");
   }
   return (
@@ -31,6 +33,8 @@ export default function PasswordGate({
         </button>
       </form>
       {searchParams.wrong ? <p className="text-sm text-red-600">Wrong password — try again.</p> : null}
+      {searchParams.rate ? <p className="text-sm text-red-600">Too many attempts — wait a few minutes.</p> : null}
+      {searchParams.nogate ? <p className="text-sm text-amber-600">The demo gate is not configured on this deployment.</p> : null}
       <p className="text-xs text-neutral-400">Synthetic demo content — not an insurance contract or coverage advice.</p>
     </main>
   );
