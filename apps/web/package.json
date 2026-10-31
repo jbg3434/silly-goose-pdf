@@ -14,7 +14,8 @@
     "corpus:load": "tsx scripts/load-corpus.ts",
     "index:build": "tsx scripts/index-corpus.ts",
     "eval:retrieval": "tsx scripts/eval-retrieval.ts",
-    "blocks:build": "tsx scripts/build-blocks.ts"
+    "blocks:build": "tsx scripts/build-blocks.ts",
+    "blocks:parity": "tsx scripts/check-blocks-parity.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "3",
