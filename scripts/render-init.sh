@@ -8,6 +8,13 @@ cd "$(dirname "$0")/.."
 # deploys never have to re-index inside the image).
 DUMP_URL="${SGM_DUMP_URL:-https://github.com/jbg3434/silly-goose-pdf/releases/download/prebuilt-db-v2/prebuilt-v2.dump}"
 
+# Bind $PORT immediately with a minimal listener so Render's port scan
+# succeeds while the (multi-minute) dump restore runs; the real app takes
+# the port over at the end of this script.
+PORT="${PORT:-3000}"
+python3 -m http.server "$PORT" --bind 0.0.0.0 >/dev/null 2>&1 &
+STUB_PID=$!
+
 echo "waiting for database…"
 for i in $(seq 1 40); do
   pg_isready -d "$DATABASE_URL" -t 3 && break
@@ -20,7 +27,7 @@ if [ "$(psql "$DATABASE_URL" -Atc "SELECT count(*) FROM index_status WHERE state
   echo "restoring corpus (~1-3 min)…"
   # --clean drops stale objects first: the free Postgres persists across
   # deploys and may still hold rows from an aborted earlier indexing run.
-  pg_restore --clean --if-exists --no-owner --no-privileges -d "$DATABASE_URL" /tmp/prebuilt.dump \
+  pg_restore --clean --if-exists --no-owner --no-privileges --jobs=4 -d "$DATABASE_URL" /tmp/prebuilt.dump \
     || echo "restore reported errors (often harmless extension/schema notices)"
   rm -f /tmp/prebuilt.dump
 else
@@ -37,4 +44,6 @@ if [ "$(psql "$DATABASE_URL" -Atc "SELECT count(*) FROM guide_blocks" 2>/dev/nul
   pnpm --filter web blocks:build || echo "guide-block build failed (guide view will be unavailable)"
 fi
 
+kill "$STUB_PID" 2>/dev/null
+sleep 1
 exec pnpm --filter web start
