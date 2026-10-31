@@ -14,11 +14,13 @@ for i in $(seq 1 40); do
   sleep 5
 done
 
-if ! psql "$DATABASE_URL" -Atc "SELECT 1 FROM chunks LIMIT 1" >/dev/null 2>&1; then
+if [ "$(psql "$DATABASE_URL" -Atc "SELECT count(*) FROM index_status WHERE state='indexed'" 2>/dev/null || echo 0)" = "0" ]; then
   echo "downloading pre-indexed dump…"
   curl -fSL --retry 3 -o /tmp/prebuilt.dump "$DUMP_URL"
   echo "restoring corpus (~1-3 min)…"
-  pg_restore --no-owner --no-privileges -d "$DATABASE_URL" /tmp/prebuilt.dump \
+  # --clean drops stale objects first: the free Postgres persists across
+  # deploys and may still hold rows from an aborted earlier indexing run.
+  pg_restore --clean --if-exists --no-owner --no-privileges -d "$DATABASE_URL" /tmp/prebuilt.dump \
     || echo "restore reported errors (often harmless extension/schema notices)"
   rm -f /tmp/prebuilt.dump
 else
