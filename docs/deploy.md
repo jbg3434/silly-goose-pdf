@@ -31,3 +31,20 @@ Synthetic demo content — not an insurance contract or coverage advice.
   refresh).
 - Redeploys rebuild the image and re-restore the dump only when the chunks
   table is empty; an existing populated database is left alone.
+
+## Demo access gate
+
+Set `GUS_DEMO_PASSWORD_HASH` in the web service's Environment tab to arm the
+site-wide gate. Generate the value locally and never commit it:
+
+```bash
+python3 -c 'import hashlib,secrets;s=secrets.token_hex(8);print("sha256$%s$%s"%(s,hashlib.sha256((s+input("password: ")).encode()).hexdigest()))'
+```
+
+The gate issues an 8-hour HMAC-signed session cookie (the password never
+reaches the client), rate-limits login attempts (10/15 min per IP), covers
+every page and API/artifact route (APIs return 401 JSON), and supports sign
+out via `GET /api/pw?logout=1` or `DELETE /api/pw`. `SITE_PASSWORD` remains
+as a deprecated plaintext fallback for compatibility with earlier deploys;
+prefer the hash. With neither set, the gate is fully open (local dev default).
+Editor/reviewer workflow actions additionally require an authorized role.

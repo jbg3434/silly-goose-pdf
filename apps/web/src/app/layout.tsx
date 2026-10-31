@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { GusProvider } from "@/components/gus/GusProvider";
 import { GusCaption, GusControls } from "@/components/gus/GusControls";
+import { AUTH_COOKIE, gateEnabled, verifySession } from "@/lib/auth";
 import "./globals.css";
 
 const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
@@ -22,7 +24,8 @@ const NAV = [
   { href: "/brand", label: "Meet Gus" },
 ];
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const signedIn = gateEnabled() && (await verifySession(cookies().get(AUTH_COOKIE)?.value));
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable} motion-auto`}>
       <body className="flex min-h-screen flex-col">
@@ -51,6 +54,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       </Link>
                     </li>
                   ))}
+                  {signedIn ? (
+                    <li>
+                      <a href="/api/pw?logout=1" className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-ivory-200 dark:hover:bg-navy-700">
+                        Sign out
+                      </a>
+                    </li>
+                  ) : null}
                 </ul>
               </nav>
               <GusControls />
