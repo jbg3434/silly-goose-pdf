@@ -59,6 +59,9 @@ export default async function Guide({ params }: { params: { documentId: string }
                   </p>
                 </div>
                 <div className="flex gap-2">
+                  <Link className="btn btn-primary" href={`/guides/${doc.document_id}/guide`}>
+                    Guide view
+                  </Link>
                   <Link className="btn btn-secondary" href={`/guides/${doc.document_id}/read`}>
                     Text reader
                   </Link>
