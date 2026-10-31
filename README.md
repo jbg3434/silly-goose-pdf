@@ -42,6 +42,17 @@ pnpm index:build                      # 5. extract/OCR/chunk/embed every publish
 pnpm dev                              # 6. app on http://localhost:3000 (search at /search, index status at /search/status)
 ```
 
+## Run with Docker Compose (no local toolchain)
+
+```bash
+docker compose up --build       # Postgres + app; ~20 min first build, then ~2 min corpus restore
+```
+
+App on http://localhost:3100. The image builds the corpus artifacts during `docker build` and the boot
+script downloads the pre-indexed database dump (`SGM_DUMP_URL`), so no indexing runs locally. Optional env
+on the `web` service: `GUS_DEMO_PASSWORD_HASH` (demo gate), `OPENCODE_API_KEY` (cited answers),
+`SGM_DUMP_URL` (dump source override).
+
 ## Project site (GitHub Pages)
 
 `site/` is a static landing page that introduces Gus and the project. `pnpm site:build` assembles it into `_site/` with the
