@@ -18,12 +18,27 @@ def soffice_convert(files, fmt, outdir: Path, workers=8):
     outdir.mkdir(parents=True, exist_ok=True)
     chunks = [files[i::workers] for i in range(workers) if files[i::workers]]
 
+    def convert(chunk, i, capture=False):
+        profile = Path(tempfile.gettempdir()) / f"sgm-lo-profile-{i}"
+        kw = {"stdout": None if capture else subprocess.DEVNULL,
+              "stderr": None if capture else subprocess.DEVNULL}
+        subprocess.run(["soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", fmt,
+                        "--outdir", str(outdir), *map(str, chunk)], check=True, timeout=1800, **kw)
+
     def run(i_chunk):
         i, chunk = i_chunk
-        profile = Path(tempfile.gettempdir()) / f"sgm-lo-profile-{i}"
-        subprocess.run(["soffice", f"-env:UserInstallation=file://{profile}", "--headless", "--convert-to", fmt,
-                        "--outdir", str(outdir), *map(str, chunk)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                       timeout=1800)
+        try:
+            convert(chunk, i)
+        except subprocess.CalledProcessError:
+            # Batch conversion can flake under parallel soffice load; retry in
+            # smaller groups, then surface the real stderr on single files.
+            for j in range(0, len(chunk), 8):
+                group = chunk[j:j + 8]
+                try:
+                    convert(group, i)
+                except subprocess.CalledProcessError:
+                    for f in group:
+                        convert([f], i, capture=True)
 
     with ThreadPoolExecutor(len(chunks)) as ex:
         list(ex.map(run, enumerate(chunks)))
