@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { AUTH_COOKIE, gateEnabled, verifySession } from "./lib/auth";
+import { AUTH_COOKIE, gateEnabled, gateRequired, verifySession } from "./lib/auth";
 
 export async function middleware(req: NextRequest) {
-  // Gate is only active when a server-side secret is configured.
-  if (!gateEnabled()) return NextResponse.next();
+  // Open only when the gate is disabled AND not required (local dev).
+  if (!gateEnabled() && !gateRequired()) return NextResponse.next();
   const { pathname } = req.nextUrl;
   // Let through the unlock page/API and anything that looks like a static file.
   if (

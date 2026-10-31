@@ -34,7 +34,7 @@ export default async function PasswordGate({
       </form>
       {searchParams.wrong ? <p className="text-sm text-red-600">Wrong password — try again.</p> : null}
       {searchParams.rate ? <p className="text-sm text-red-600">Too many attempts — wait a few minutes.</p> : null}
-      {searchParams.nogate ? <p className="text-sm text-amber-600">The demo gate is not configured on this deployment.</p> : null}
+      {searchParams.nogate ? <p className="text-sm text-amber-600">Access is required — ask the administrator for the demo password.</p> : null}
       <p className="text-xs text-neutral-400">Synthetic demo content — not an insurance contract or coverage advice.</p>
     </main>
   );
