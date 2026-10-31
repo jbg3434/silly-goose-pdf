@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 
 # Pre-indexed corpus dump (built once, published as a GitHub Release asset so
 # deploys never have to re-index inside the image).
-DUMP_URL="${SGM_DUMP_URL:-https://github.com/jbg3434/silly-goose-pdf/releases/download/prebuilt-db-v1/prebuilt.dump}"
+DUMP_URL="${SGM_DUMP_URL:-https://github.com/jbg3434/silly-goose-pdf/releases/download/prebuilt-db-v2/prebuilt-v2.dump}"
 
 echo "waiting for database…"
 for i in $(seq 1 40); do
