@@ -21,6 +21,15 @@ export function gateEnabled(): boolean {
   return secret() !== "";
 }
 
+// Fail closed in deployed environments: production defaults to requiring a
+// configured secret, so an unset/misconfigured env locks the site instead of
+// opening it. SGM_REQUIRE_GATE=0 opts out explicitly (local dev).
+export function gateRequired(): boolean {
+  const v = process.env.SGM_REQUIRE_GATE;
+  if (v != null) return v !== "0" && v.toLowerCase() !== "false";
+  return process.env.NODE_ENV === "production";
+}
+
 async function hmacHex(key: string, msg: string): Promise<string> {
   const k = await crypto.subtle.importKey("raw", te.encode(key), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const sig = await crypto.subtle.sign("HMAC", k, te.encode(msg));
@@ -45,7 +54,13 @@ export async function verifyPassword(candidate: string): Promise<boolean> {
     }
   }
   const legacy = process.env.SITE_PASSWORD;
-  return !!legacy && candidate === legacy;
+  if (!legacy) return false;
+  // constant-time compare for the legacy plaintext fallback too
+  const a = te.encode(candidate), b = te.encode(legacy);
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a[i] ^ b[i];
+  return diff === 0;
 }
 
 export async function issueSession(now = Date.now()): Promise<string> {

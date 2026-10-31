@@ -46,5 +46,11 @@ reaches the client), rate-limits login attempts (10/15 min per IP), covers
 every page and API/artifact route (APIs return 401 JSON), and supports sign
 out via `GET /api/pw?logout=1` or `DELETE /api/pw`. `SITE_PASSWORD` remains
 as a deprecated plaintext fallback for compatibility with earlier deploys;
-prefer the hash. With neither set, the gate is fully open (local dev default).
+prefer the hash.
+
+**The gate fails closed in production.** With `NODE_ENV=production` (every
+deployed build), a missing secret locks the whole site to the unlock page and
+401s every API instead of opening it — an unset env can never expose the demo.
+Local dev stays open by default; set `SGM_REQUIRE_GATE=1` to force the gate in
+dev, or `SGM_REQUIRE_GATE=0` to force it open in production.
 Editor/reviewer workflow actions additionally require an authorized role.
