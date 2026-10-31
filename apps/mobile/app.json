@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Silly Goose Mutual",
+    "slug": "silly-goose-mutual",
+    "scheme": "sillygoose",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#172B3A",
+    "newArchEnabled": true,
+    "plugins": ["expo-router", "expo-secure-store"],
+    "experiments": { "typedRoutes": true },
+    "ios": { "bundleIdentifier": "com.sillygoose.app", "supportsTablet": true },
+    "android": { "package": "com.sillygoose.app" },
+    "extra": {
+      "apiBaseUrl": "https://silly-goose-mutual.onrender.com"
+    }
+  }
+}
