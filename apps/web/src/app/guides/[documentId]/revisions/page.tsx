@@ -39,9 +39,10 @@ export default async function Revisions({ params }: { params: { documentId: stri
   const { doc } = r;
   const { lineage_id } = (await pool.query<{ lineage_id: string }>("SELECT lineage_id FROM editions WHERE edition_id = $1", [doc.edition_id])).rows[0];
   const current = (
-    await pool.query<{ document_id: string; edition_number: number; odt_id: string | null }>(
+    await pool.query<{ document_id: string; edition_number: number; odt_id: string | null; docx_id: string | null }>(
       `SELECT d.document_id, e.edition_number,
-         (SELECT a.artifact_id FROM artifacts a WHERE a.edition_id = e.edition_id AND a.format = 'odt' ORDER BY a.uploaded_at DESC LIMIT 1) AS odt_id
+         (SELECT a.artifact_id FROM artifacts a WHERE a.edition_id = e.edition_id AND a.format = 'odt' ORDER BY a.uploaded_at DESC LIMIT 1) AS odt_id,
+         (SELECT a.artifact_id FROM artifacts a WHERE a.edition_id = e.edition_id AND a.format = 'docx' ORDER BY a.uploaded_at DESC LIMIT 1) AS docx_id
        FROM editions e JOIN documents d ON d.edition_id = e.edition_id WHERE e.lineage_id = $1 AND e.publication_state = 'published' AND e.current_to IS NULL`,
       [lineage_id],
     )
@@ -102,9 +103,9 @@ export default async function Revisions({ params }: { params: { documentId: stri
                 )}
                 <p className="mt-3 break-all font-mono text-xs muted">ODT SHA-256 {rev.odt_sha}</p>
                 <div className="mt-3 flex flex-wrap gap-2 text-sm">
-                  <a className="btn-secondary" href={`/api/artifacts/${rev.source_artifact_id}`}>Uploaded {rev.source_format.toUpperCase()}</a>
-                  {rev.source_format === "docx" && <a className="btn-secondary" href={`/api/artifacts/${rev.canonical_odt_artifact_id}`}>Converted ODT</a>}
-                  <a className="btn-secondary" href={`/api/artifacts/${rev.pdf_artifact_id}?inline=1`}>Draft PDF</a>
+                  <a className="btn-secondary" href={`/api/artifacts/${rev.source_artifact_id}`} download target="_blank" rel="noopener">Uploaded {rev.source_format.toUpperCase()}</a>
+                  {rev.source_format === "docx" && <a className="btn-secondary" href={`/api/artifacts/${rev.canonical_odt_artifact_id}`} download target="_blank" rel="noopener">Converted ODT</a>}
+                  <a className="btn-secondary" href={`/api/artifacts/${rev.pdf_artifact_id}?inline=1`} target="_blank" rel="noopener">Draft PDF</a>
                   {rev.published_edition_id && <Link className="btn-secondary" href={`/guides/SGM-${rev.published_edition_id}`}>Open published edition</Link>}
                 </div>
 
@@ -187,8 +188,14 @@ export default async function Revisions({ params }: { params: { documentId: stri
             <h2 className="font-semibold">New draft revision</h2>
             {current?.odt_id ? (
               <p className="mt-1 text-sm">
-                Start from the <a className="link" href={`/api/artifacts/${current.odt_id}`}>current edition {current.edition_number} ODT</a>, edit it in
-                LibreOffice or Word, then upload it here.
+                Start from the current edition {current.edition_number} template:{" "}
+                {current.docx_id && (
+                  <>
+                    <a className="link" href={`/api/artifacts/${current.docx_id}`} download target="_blank" rel="noopener">Word (.docx)</a>
+                    {" · "}
+                  </>
+                )}
+                <a className="link" href={`/api/artifacts/${current.odt_id}`} download target="_blank" rel="noopener">ODT</a>, edit it in LibreOffice or Word, then upload it here.
               </p>
             ) : (
               <p className="mt-1 text-sm muted">The current edition has no editable source. Upload a reconstructed ODT or DOCX.</p>
