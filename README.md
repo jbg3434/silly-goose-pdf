@@ -22,6 +22,43 @@ The corpus build generates every guide from canonical facts and state/edition ov
 published PDF, its source files with SHA-256 hashes, state differences, edition changes, and a simulated approval trail.
 See [docs/corpus.md](docs/corpus.md) for the generation contract, challenge set, and reproducibility notes.
 
+## Accuracy
+
+Two benchmarks, both run against the full 1,002-guide index. The guides are synthetic, so these results are accuracy against
+known answers, not proof of accuracy on real guides or real user traffic.
+
+**Realistic hard questions** (`data/ground-truth/realistic-hard.jsonl`, 43 hand-labelled questions written the way agents
+and underwriters ask: unscoped, shorthand, scenarios, jargon, false premises, math, edition changes, typos, prompt
+injection, and questions no guide answers). A pass needs the right value in the cited answer **and** a citation to a page
+that states it. Grading uses only document ID + page, not generator fact tags, so the same file format works for real guides.
+
+| Run | Passed | Wrong answers | Unanswerable declined |
+| --- | --- | --- | --- |
+| Full corpus | 41 / 43 | 0 | 6 / 6 |
+| Synthetic Q&A (`faq`) blocks removed, about 21% of passages, closer to real guides | 39 / 43 | 0 | 6 / 6 |
+
+Every miss was a decline caused by insurance vocabulary the search doesn't map yet: "uber" vs. rideshare, "GVWR", and
+without the Q&A blocks also "AOP ded on an HO" and "1000 watt e-bike". 8 questions list a second gold page (a summary
+table, referral table or state appendix) that was confirmed by hand to state the same value.
+
+**Generator benchmark** (`data/ground-truth/eval-queries.json`, 117 templated questions, 12 with no answer):
+
+| Search mode | Recall@10 | MRR | Scope violations | p50 / p95 |
+| --- | --- | --- | --- | --- |
+| Hybrid (default) | 99% (104/105) | 0.717 | 0 | 17 / 62 ms |
+| Vector only | 97.1% | 0.542 | 0 | 12 / 22 ms |
+| Keyword only | 95.2% | 0.628 | 0 | 9 / 34 ms |
+
+All 12 unanswerable questions were declined, and every result cited a valid PDF page range.
+
+Run them yourself:
+
+```bash
+pnpm eval:retrieval                                              # search-level benchmark (overwrites reports/eval/*.json)
+python3 scripts/eval_answers.py --base-url http://localhost:3100 # answer-level hard set; needs the app running + OPENCODE_API_KEY
+# against a password-gated deployment: SGM_COOKIE="sgm_auth=<session cookie>" python3 scripts/eval_answers.py --base-url https://...
+```
+
 ## Requirements
 
 - Node 20 and pnpm 9 (`corepack enable` or `npm i -g pnpm@9`)
