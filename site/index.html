@@ -28,6 +28,7 @@
         <a href="#gus">Meet Gus</a>
         <a href="#film">Gus on film</a>
         <a href="#building">What we're building</a>
+        <a href="#accuracy">Accuracy</a>
         <a href="#roadmap">Roadmap</a>
         <a class="btn-ghost" href="https://github.com/jbg3434/silly-goose-pdf">GitHub</a>
       </nav>
@@ -156,6 +157,29 @@
         <figure><img src="assets/screens/home.png" alt="Silly Goose Mutual home page with search and Gus in the hero" loading="lazy" /><figcaption>Home</figcaption></figure>
         <figure><img src="assets/screens/library.png" alt="Guide library with product, state, and edition filters" loading="lazy" /><figcaption>Guide library</figcaption></figure>
         <figure><img src="assets/screens/gus.png" alt="Meet Gus page showing all seven poses and the app icon" loading="lazy" /><figcaption>Meet Gus</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="band" id="accuracy" aria-labelledby="accuracy-h">
+      <div class="wrap">
+        <p class="eyebrow">Accuracy</p>
+        <h2 id="accuracy-h">Hard questions, asked the way agents ask them. Zero made-up answers.</h2>
+        <p class="lede narrow">
+          43 hand-labelled questions with no filters set, using shorthand ("AOP ded on an HO in TX?"), scenarios, false premises,
+          math, typos, and a prompt injection. A pass needs the right value <em>and</em> a citation to a page that states it.
+        </p>
+        <dl class="stats">
+          <div><dt>Hard questions passed</dt><dd>41/43</dd></div>
+          <div><dt>Without synthetic Q&amp;A blocks</dt><dd>39/43</dd></div>
+          <div><dt>Wrong answers given</dt><dd>0</dd></div>
+          <div><dt>Hybrid recall@10 (117-query set)</dt><dd>99%</dd></div>
+        </dl>
+        <div class="pillars">
+          <article><h3>Graded like real guides</h3><p>Scoring uses only document and page, not hidden generator tags, so the same test runs unchanged on real guides.</p></article>
+          <article><h3>Knows when to stop</h3><p>Every question with no answer in any guide was declined: 6 of 6 hard, 12 of 12 templated.</p></article>
+          <article><h3>Honest misses</h3><p>Every failure was a decline on unmapped vocabulary ("uber" vs. rideshare, "GVWR"), never a wrong value.</p></article>
+          <article><h3>Synthetic caveat</h3><p>These are invented guides and known answers, not proof of accuracy on real guides or real user traffic.</p></article>
+        </div>
       </div>
     </section>
 
