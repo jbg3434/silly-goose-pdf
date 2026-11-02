@@ -68,7 +68,7 @@ export default async function Guide({ params }: { params: { documentId: string }
           )}
         </div>
         <div className="flex items-center gap-2">
-          {pdf && <a href={`/api/artifacts/${pdf.artifact_id}`} className="btn-primary">View source PDF</a>}
+          {pdf && <a href={`/api/artifacts/${pdf.artifact_id}?inline=1`} target="_blank" rel="noopener" className="btn-primary">View source PDF</a>}
           <span className="badge-synthetic">Synthetic</span>
           <StatusPill state={doc.publication_state} />
         </div>
@@ -153,7 +153,7 @@ export default async function Guide({ params }: { params: { documentId: string }
               <h2 id="no-guide-h" className="font-serif text-2xl">Structured view not built yet</h2>
               <p className="mt-2 text-sm muted">
                 Run <code>pnpm --filter web blocks:build</code> to derive guide blocks for this document.
-                {pdf && <> The <a className="link" href={`/api/artifacts/${pdf.artifact_id}`}>source PDF</a> is available meanwhile.</>}
+                {pdf && <> The <a className="link" href={`/api/artifacts/${pdf.artifact_id}?inline=1`} target="_blank" rel="noopener">source PDF</a> is available meanwhile.</>}
               </p>
             </section>
           )}
@@ -257,7 +257,13 @@ export default async function Guide({ params }: { params: { documentId: string }
               <ul className="mt-2 space-y-2 text-sm">
                 {details.artifacts.map((a) => (
                   <li key={a.artifact_id}>
-                    <a className="link font-medium" href={`/api/artifacts/${a.artifact_id}`}>
+                    <a
+                      className="link font-medium"
+                      href={`/api/artifacts/${a.artifact_id}${a.format === "pdf" ? "?inline=1" : ""}`}
+                      target="_blank"
+                      rel="noopener"
+                      download={a.format !== "pdf"}
+                    >
                       {a.format.toUpperCase()}
                     </a>{" "}
                     <span className="muted">
