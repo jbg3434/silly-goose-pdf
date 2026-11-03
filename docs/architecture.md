@@ -1,5 +1,7 @@
 # Architecture note
 
+This page describes the **implemented** PostgreSQL/pgvector and local-artifact architecture. See [proposed integrations](proposed-integrations.md) for the documentation-only document-service/S3, MongoDB Atlas, and Voyage AI path.
+
 ## Choices so far
 
 | Concern | Choice | Why |
