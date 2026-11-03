@@ -17,10 +17,15 @@ A document-intelligence demo over a library of wholly synthetic insurance produc
 | 5 | Guide workspace: text reader, find-in-guide, cited answers via OpenCode ([docs/workspace.md](docs/workspace.md)) | Done |
 | 6 | Portfolio research: /compare state matrix (facts × 50 states, overrides highlighted) | Done |
 | 7 | Hardening + free Render deploy (Dockerfile, render.yaml, Postgres+pgvector, storage disk) | Done |
+| 8 | One versioned knowledge service: document service over private S3, MongoDB Atlas lexical + vector search, Voyage AI embeddings, read-only MCP tools ([docs/proposed-integrations.md](docs/proposed-integrations.md)) | Proposed (documentation only) |
 
 The corpus build generates every guide from canonical facts and state/edition overrides. Each guide page shows the
 published PDF, its source files with SHA-256 hashes, state differences, edition changes, and a simulated approval trail.
 See [docs/corpus.md](docs/corpus.md) for the generation contract, challenge set, and reproducibility notes.
+
+## Proposed integrations (documentation only)
+
+[Document service + S3, MongoDB Atlas, and Voyage AI](docs/proposed-integrations.md) describes a possible integration path for versioned source files, OCR/extraction, lexical and vector search, the web guide, and read-only agent access. It is a design proposal; the running application and the benchmarks below still use the current PostgreSQL/pgvector and local-artifact implementation.
 
 ## Accuracy
 
