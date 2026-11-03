@@ -126,6 +126,7 @@
           <article><h3>Eval-first retrieval</h3><p>A deterministic golden dataset scores every search change before vectors or LLMs touch the answer path.</p></article>
           <article><h3>Simulated approvals</h3><p>Draft, review, filing, and approval are bound to exact artifact hashes in a clearly labeled simulated DOI workflow.</p></article>
         </div>
+        <p class="lede narrow" style="margin-top:40px"><strong>Next, proposed:</strong> one versioned, cited knowledge service behind the portal search, the web guides, an ask-the-guides experience, and read-only MCP tools for agents. A document service fronts private S3 for the original PDFs and DOCX/ODT drafts; MongoDB Atlas holds the search read model (lexical + vector); Voyage AI embeds only reviewed chunks. Every citation and export resolves to the same published version and SHA-256. Each step is gated on matching today's accuracy baseline. This is a design proposal, not implemented &mdash; <a href="https://github.com/jbg3434/silly-goose-pdf/blob/main/docs/proposed-integrations.md">read the integration plan</a>.</p>
       </div>
     </section>
 
@@ -187,7 +188,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2 id="roadmap-h">Roadmap</h2>
-          <p class="muted">Seven staged pull requests, each shippable on its own.</p>
+          <p class="muted">Seven shipped stages, each shippable on its own — and one proposed.</p>
         </div>
         <ol class="roadmap">
           <li class="done"><b>1</b><div><h3>Foundation &amp; brand</h3><p>App shell, design system, Gus, schema, local services, home/catalog/library.</p></div><span class="tag">Done</span></li>
@@ -197,6 +198,7 @@
           <li class="done"><b>5</b><div><h3>Guide workspace</h3><p>Text reader with section navigation, find-in-guide, and cited answers scoped to retrieved passages (LLM model selectable per question).</p></div><span class="tag">Done</span></li>
           <li class="done"><b>6</b><div><h3>Portfolio research</h3><p>A state-by-state comparison matrix: every guide term × all 50 states with overrides highlighted, plus the cross-library search from stage 4.</p></div><span class="tag">Done</span></li>
           <li class="done"><b>7</b><div><h3>Hardening + free Render deploy</h3><p>Eval suite, accessibility, performance, handoff — plus one-click Blueprint deploy (Dockerfile, Postgres+pgvector, storage disk).</p></div><span class="tag">Done</span></li>
+          <li><b>8</b><div><h3>One knowledge service</h3><p>Document service over private S3, MongoDB Atlas lexical + vector search, Voyage AI embeddings, and read-only MCP tools, migrated behind shadow indexes and the accuracy baseline. <a href="https://github.com/jbg3434/silly-goose-pdf/blob/main/docs/proposed-integrations.md">Integration plan</a>.</p></div><span class="tag">Proposed</span></li>
         </ol>
       </div>
     </section>
